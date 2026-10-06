@@ -67,7 +67,7 @@ export default function CategoryShowcase({ onSelectCategory, selectedCategory })
 
   const handleCardClick = (cat) => {
     if (onSelectCategory) {
-      onSelectCategory(cat.target);
+      onSelectCategory(cat.id);
     }
   };
 

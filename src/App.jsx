@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AboutSection from './components/AboutSection';
 import CategoryShowcase from './components/CategoryShowcase';
+import RangeCategoryPage from './components/RangeCategoryPage';
 import ProductSection from './components/ProductSection';
 import SavouriesSection from './components/SavouriesSection';
 import ReelShowcase from './components/ReelShowcase';
@@ -26,6 +27,7 @@ export default function App() {
   const [currency, setCurrency] = useState('INR');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [activeSection, setActiveSection] = useState('home');
+  const [rangeCategoryView, setRangeCategoryView] = useState(null);
 
   // Cart State (Persisted in localStorage)
   const [cart, setCart] = useState(() => {
@@ -91,20 +93,33 @@ export default function App() {
 
   // Smooth Navigation
   const scrollToSection = (hash) => {
-    const targetId = hash.replace('#', '');
-    const element = document.getElementById(targetId);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
+    const isCategoryOpen = !!rangeCategoryView;
+    if (isCategoryOpen) {
+      setRangeCategoryView(null);
     }
+
+    const targetId = hash.replace('#', '');
+    if (targetId === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('home');
+      return;
+    }
+
+    setTimeout(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        const offset = 80;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+      }
+    }, isCategoryOpen ? 60 : 0);
   };
 
   // Cart Operations
@@ -186,82 +201,89 @@ export default function App() {
         onNavigate={scrollToSection}
       />
 
-      {/* Main Page Layout */}
-      <main style={{ flexGrow: 1 }}>
-        
-        {/* 3. Hero Section with Trust Bar */}
-        <Hero
-          onExploreSweets={() => scrollToSection('#sweets')}
-          onExploreKitchen={() => scrollToSection('#kitchen')}
-          onExploreReels={() => scrollToSection('#reels')}
-        />
+      {/* Main Content Area: Either Dedicated RangeCategoryPage OR Full Home Page */}
+      {rangeCategoryView ? (
+        <main style={{ flexGrow: 1 }}>
+          <RangeCategoryPage
+            initialCategoryId={rangeCategoryView}
+            onBackToHome={() => {
+              setRangeCategoryView(null);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onAddToCart={handleAddToCart}
+            onQuickView={(prod) => setQuickViewProduct(prod)}
+            currency={currency}
+          />
+        </main>
+      ) : (
+        <main style={{ flexGrow: 1 }}>
+          
+          {/* 3. Hero Section with Trust Bar */}
+          <Hero
+            onExploreSweets={() => scrollToSection('#sweets')}
+            onExploreKitchen={() => scrollToSection('#kitchen')}
+            onExploreReels={() => scrollToSection('#reels')}
+          />
 
-        {/* 4. Shop Our Range Horizontal Scroll Block (Reference Image 1) */}
-        <CategoryShowcase
-          selectedCategory={selectedCategory}
-          onSelectCategory={(catId) => {
-            if (catId === 'kitchen') {
-              scrollToSection('#kitchen');
-            } else if (catId === 'savouries') {
-              scrollToSection('#savouries');
-            } else if (catId === 'gifting') {
-              scrollToSection('#gifting');
-            } else {
-              setSelectedCategory(catId);
-              scrollToSection('#sweets');
-            }
-          }}
-        />
+          {/* 4. Shop Our Range Horizontal Scroll Block (Reference Image 1) */}
+          <CategoryShowcase
+            selectedCategory={selectedCategory}
+            onSelectCategory={(catId) => {
+              setRangeCategoryView(catId);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
 
-        {/* 5. Best Sellers & Sweets Section */}
-        <ProductSection
-          products={PRODUCTS}
-          selectedCategory={selectedCategory}
-          onSelectCategory={setSelectedCategory}
-          onAddToCart={handleAddToCart}
-          onQuickView={(prod) => setQuickViewProduct(prod)}
-          currency={currency}
-        />
+          {/* 5. Best Sellers & Sweets Section */}
+          <ProductSection
+            products={PRODUCTS}
+            selectedCategory={selectedCategory}
+            onSelectCategory={setSelectedCategory}
+            onAddToCart={handleAddToCart}
+            onQuickView={(prod) => setQuickViewProduct(prod)}
+            currency={currency}
+          />
 
-        {/* 6. Savouries Showcase */}
-        <SavouriesSection
-          products={PRODUCTS}
-          onAddToCart={handleAddToCart}
-          onQuickView={(prod) => setQuickViewProduct(prod)}
-          currency={currency}
-        />
+          {/* 6. Savouries Showcase */}
+          <SavouriesSection
+            products={PRODUCTS}
+            onAddToCart={handleAddToCart}
+            onQuickView={(prod) => setQuickViewProduct(prod)}
+            currency={currency}
+          />
 
-        {/* 7. Murari Live Reels & Kitchen Stories (3D Perspective Showcase) */}
-        <ReelShowcase
-          onAddToCart={handleAddToCart}
-          currency={currency}
-        />
+          {/* 7. Murari Live Reels & Kitchen Stories (3D Perspective Showcase) */}
+          <ReelShowcase
+            onAddToCart={handleAddToCart}
+            currency={currency}
+          />
 
-        {/* 8. The Kitchen Multi-Cuisine Menu */}
-        <KitchenMenuSection
-          onAddToCart={handleAddToCart}
-          currency={currency}
-        />
+          {/* 8. The Kitchen Multi-Cuisine Menu */}
+          <KitchenMenuSection
+            onAddToCart={handleAddToCart}
+            currency={currency}
+          />
 
-        {/* 9. Royal Gifting & Hampers */}
-        <GiftingSection
-          onAddToCart={handleAddToCart}
-          currency={currency}
-        />
+          {/* 9. Royal Gifting & Hampers */}
+          <GiftingSection
+            onAddToCart={handleAddToCart}
+            currency={currency}
+          />
 
-        {/* 10. Hallmark Brand Pillars */}
-        <WhyMurari />
+          {/* 10. Hallmark Brand Pillars */}
+          <WhyMurari />
 
-        {/* 11. Testimonials */}
-        <Testimonials />
+          {/* 11. Testimonials */}
+          <Testimonials />
 
-        {/* 12. Authentic About Us Section (Estd. 1952 in Raigarh, Chhattisgarh) */}
-        <AboutSection />
+          {/* 12. Authentic About Us Section (Estd. 1952 in Raigarh, Chhattisgarh) */}
+          <AboutSection />
 
-        {/* 13. Store Outlets / Visit Us */}
-        <StoreLocator />
+          {/* 13. Store Outlets / Visit Us */}
+          <StoreLocator />
 
-      </main>
+        </main>
+      )}
 
       {/* 14. Luxury Emerald & Maroon Footer (Reference Image 8) */}
       <Footer onNavigate={scrollToSection} />

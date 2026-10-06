@@ -25,7 +25,6 @@ export default function Navbar({
 
   const navItems = [
     { label: 'Home', href: '#home' },
-    { label: 'Shop Range', href: '#shop-range' },
     { label: 'Sweets', href: '#sweets' },
     { label: 'Savouries', href: '#savouries' },
     { label: 'Kitchen Menu', href: '#kitchen', highlight: true },

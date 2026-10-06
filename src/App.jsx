@@ -71,8 +71,14 @@ export default function App() {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'shop-range', 'sweets', 'savouries', 'reels', 'kitchen', 'gifting', 'about', 'outlets', 'contact'];
-      const scrollPos = window.scrollY + 140;
+      // Check if scrolled near the very bottom
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
+        setActiveSection('contact');
+        return;
+      }
+
+      const sections = ['home', 'shop-range', 'sweets', 'savouries', 'reels', 'kitchen', 'gifting', 'outlets', 'about', 'contact'];
+      const scrollPos = window.scrollY + 160;
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
@@ -273,11 +279,11 @@ export default function App() {
           {/* 11. Testimonials */}
           <Testimonials />
 
-          {/* 12. Authentic About Us Section (Estd. 1952 in Raigarh, Chhattisgarh) */}
-          <AboutSection />
-
-          {/* 13. Store Outlets / Visit Us */}
+          {/* 12. Store Outlets / Visit Us */}
           <StoreLocator />
+
+          {/* 13. Authentic About Us Section (Estd. 1952 in Raigarh, Chhattisgarh) */}
+          <AboutSection />
 
         </main>
       )}

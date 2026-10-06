@@ -356,7 +356,7 @@ const RAW_KITCHEN_MENU = [
     serves: '1 person',
     spicy: 'Sweet',
     isSignature: true,
-    image: '/items/sweet-3.jfif',
+    image: '/items/sweet-3.jpg',
     description: 'Pair of warm, saffron-soaked mawa gulab jamuns served alongside rich velvety Madagascar vanilla ice cream.',
   }
 ];

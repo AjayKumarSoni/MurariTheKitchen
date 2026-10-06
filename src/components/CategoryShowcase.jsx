@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { assetUrl } from '../utils/assetUrl';
 
 export default function CategoryShowcase({ onSelectCategory, selectedCategory }) {
   const categories = [
@@ -8,35 +9,35 @@ export default function CategoryShowcase({ onSelectCategory, selectedCategory })
       id: 'express',
       name: '₹99 Store',
       tag: 'DAILY FRESH',
-      image: '/items/Savouries-2.jfif',
+      image: assetUrl('/items/Savouries-2.jpg'),
       badgeColor: '#630C1E',
     },
     {
       id: 'sweets',
       name: 'Pure Ghee Sweets',
       tag: 'HANDCRAFTED',
-      image: '/items/sweet-1.jfif',
+      image: assetUrl('/items/sweet-1.jpg'),
       badgeColor: '#C68928',
     },
     {
       id: 'savouries',
       name: 'Crispy Savouries',
       tag: 'GROUNDNUT OIL',
-      image: '/items/Savouries-1.jfif',
+      image: assetUrl('/items/Savouries-1.jpg'),
       badgeColor: '#154D36',
     },
     {
       id: 'masterpieces',
       name: 'Royal Masterpieces',
       tag: 'PREMIUM',
-      image: '/items/sweet-6.jfif',
+      image: assetUrl('/items/sweet-6.jpg'),
       badgeColor: '#8A152E',
     },
     {
       id: 'gifting',
       name: 'Royal Gifting',
       tag: 'FESTIVE HAMPERS',
-      image: '/items/gift-2.jfif',
+      image: assetUrl('/items/gift-2.jpg'),
       badgeColor: '#520C1C',
     },
   ];
@@ -139,6 +140,11 @@ export default function CategoryShowcase({ onSelectCategory, selectedCategory })
                   <img
                     src={cat.image}
                     alt={cat.name}
+                    onError={(e) => {
+                      if (e.target.src.endsWith('.jpg')) {
+                        e.target.src = e.target.src.replace('.jpg', '.jfif');
+                      }
+                    }}
                     style={{
                       width: '100%',
                       height: '100%',

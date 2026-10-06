@@ -93,6 +93,13 @@ export default function QuickViewModal({ product, isOpen, onClose, onAddToCart, 
             <img
               src={product.image}
               alt={product.name}
+              onError={(e) => {
+                if (e.target.src.endsWith('.jfif')) {
+                  e.target.src = e.target.src.replace('.jfif', '.jpg');
+                } else if (e.target.src.endsWith('.jpg')) {
+                  e.target.src = e.target.src.replace('.jpg', '.jfif');
+                }
+              }}
               style={{
                 width: '100%',
                 height: '100%',

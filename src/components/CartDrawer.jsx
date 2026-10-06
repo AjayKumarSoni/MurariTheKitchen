@@ -187,6 +187,13 @@ export default function CartDrawer({
                       <img
                         src={item.image}
                         alt={item.name}
+                        onError={(e) => {
+                          if (e.target.src.endsWith('.jfif')) {
+                            e.target.src = e.target.src.replace('.jfif', '.jpg');
+                          } else if (e.target.src.endsWith('.jpg')) {
+                            e.target.src = e.target.src.replace('.jpg', '.jfif');
+                          }
+                        }}
                         style={{
                           width: '65px',
                           height: '65px',

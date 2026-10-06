@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gift, Check, Send, Sparkles, X } from 'lucide-react';
+import { assetUrl } from '../utils/assetUrl';
 
 export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
   const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
@@ -12,25 +13,41 @@ export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
       id: 'gift-maharaja',
       title: 'Maharaja Wedding Trousseau Hamper',
       price: 2200,
-      description: 'Royal gift basket packed with fresh Besan Ladoo, Calcutta Chevda, and premium dry fruit sweets.',
-      image: '/items/gift-5.jfif',
+      description: 'Grand wicker basket packed with Besan Ladoo, Calcutta Chevda, roasted almonds, and luxury sweets.',
+      image: assetUrl('/items/gift-5.jpg'),
       badge: 'ROYAL WEDDING SPECIAL',
     },
     {
       id: 'gift-utsav',
       title: 'Utsav Macrame Festive Sweet Hamper',
       price: 1250,
-      description: 'Handcrafted festive basket with Murari Kaju Katli, Cham Cham, and roasted dry fruits.',
-      image: '/items/gift-2.jfif',
+      description: 'Handcrafted macrame basket with Murari Kaju Katli, Cham Cham, and roasted dry fruits.',
+      image: assetUrl('/items/gift-2.jpg'),
       badge: 'FESTIVE BESTSELLER',
     },
     {
       id: 'gift-corporate',
       title: 'The Executive Gourmet Hamper Trunk',
       price: 1450,
-      description: 'Luxury gift trunk with roasted nuts, pure sweets, and celebratory treats.',
-      image: '/items/gift-1.jfif',
+      description: 'Keepsake luxury trunk packed with roasted Afghani nuts, pure sweets, and celebratory treats.',
+      image: assetUrl('/items/gift-1.jpg'),
       badge: 'CORPORATE CHOICE',
+    },
+    {
+      id: 'gift-bouquet',
+      title: 'Royal Celebration Sweet Gift Bouquet',
+      price: 850,
+      description: 'Artistically arranged floral gift basket packed with artisanal mithai bites and festive accents.',
+      image: assetUrl('/items/gift-4.jpg'),
+      badge: 'SPECIAL OCCASION',
+    },
+    {
+      id: 'gift-treats',
+      title: 'Celebration Treats & Munchies Gift Box',
+      price: 650,
+      description: 'Vibrant celebration hamper filled with crunch snacks, sweet bites, and family party delicacies.',
+      image: assetUrl('/items/gift-3.jpg'),
+      badge: 'FAMILY FAVORITE',
     },
   ];
 
@@ -94,6 +111,11 @@ export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
                 <img
                   src={box.image}
                   alt={box.title}
+                  onError={(e) => {
+                    if (e.target.src.endsWith('.jpg')) {
+                      e.target.src = e.target.src.replace('.jpg', '.jfif');
+                    }
+                  }}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <span

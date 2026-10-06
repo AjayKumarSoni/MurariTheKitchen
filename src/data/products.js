@@ -12,7 +12,7 @@ export const CATEGORIES = [
 ];
 
 const RAW_PRODUCTS = [
-  // 1. Royal Kaju Katli (From /items/sweet-1.jfif)
+  // 1. Royal Kaju Katli (From /items/sweet-1.jpg)
   {
     id: 'royal-kaju-katli',
     name: 'Murari Royal Kaju Katli',
@@ -29,14 +29,14 @@ const RAW_PRODUCTS = [
       { label: '400 G', multiplier: 1.9, price: 530 },
       { label: '800 G', multiplier: 3.6, price: 990 },
     ],
-    image: '/items/sweet-1.jfif',
+    image: '/items/sweet-1.jpg',
     description: 'Diamond-shaped silver-kissed sweet crafted exclusively from selected high-grade Goan cashew nuts with zero added starch and pure natural sweetness.',
     ingredients: ['Grade W210 Cashews', 'Refined Cane Sugar', 'Pure Silver Leaf (Vark)', 'Cardamom Essence'],
     shelfLife: '25 Days',
     isVeg: true,
   },
 
-  // 2. Royal Malai Cham Cham (From /items/sweet-2.jfif)
+  // 2. Royal Malai Cham Cham (From /items/sweet-2.jpg)
   {
     id: 'shahi-cham-cham',
     name: 'Royal Malai Cham Cham',
@@ -53,14 +53,14 @@ const RAW_PRODUCTS = [
       { label: '500 G', multiplier: 1.85, price: 295 },
       { label: '1 KG', multiplier: 3.5, price: 560 },
     ],
-    image: '/items/sweet-2.jfif',
+    image: '/items/sweet-2.jpg',
     description: 'Delicate oval dumplings of fresh cow milk chhena poached in light cardamom syrup, rolled in rich mawa dust and garnished with Iranian pistachios.',
     ingredients: ['Fresh Cow Milk Chhena', 'Organic Cane Sugar', 'Roasted Khoya Mawa', 'Green Pistachios', 'Cardamom'],
     shelfLife: '7 Days',
     isVeg: true,
   },
 
-  // 3. Royal Shahi Kala Jamun (From /items/sweet-3.jfif)
+  // 3. Royal Shahi Kala Jamun (From /items/sweet-3.jpg)
   {
     id: 'royal-shahi-kala-jamun',
     name: 'Royal Shahi Kala Jamun',
@@ -77,14 +77,14 @@ const RAW_PRODUCTS = [
       { label: '500 G', multiplier: 1.85, price: 315 },
       { label: '1 KG', multiplier: 3.5, price: 590 },
     ],
-    image: '/items/sweet-3.jfif',
+    image: '/items/sweet-3.jpg',
     description: 'Deep carmelized dark gulab jamuns slow-fried to an imperial velvet finish in pure desi ghee, filled with saffron-soaked dry fruit kernels.',
     ingredients: ['Pure Buffalo Mawa', 'Cow Ghee', 'Kashmir Saffron', 'Pistachios', 'Almonds', 'Cardamom Syrup'],
     shelfLife: '12 Days',
     isVeg: true,
   },
 
-  // 4. Rose Petal Chenna Rasgulla (From /items/sweet-4.jfif)
+  // 4. Rose Petal Chenna Rasgulla (From /items/sweet-4.jpg)
   {
     id: 'bengali-chenna-rasgulla',
     name: 'Rose Petal Spongy Chenna Rasgulla',
@@ -101,14 +101,14 @@ const RAW_PRODUCTS = [
       { label: '500 G (12 Pcs)', multiplier: 1.85, price: 260 },
       { label: '1 KG (24 Pcs)', multiplier: 3.5, price: 490 },
     ],
-    image: '/items/sweet-4.jfif',
+    image: '/items/sweet-4.jpg',
     description: 'Feather-light spongy chhena spheres soaked in delicate rose-scented syrup, adorned with fresh rose petals. Extremely juicy and refreshing.',
     ingredients: ['Fresh Cow Milk Curd Chhena', 'Light Sugar Syrup', 'Rose Petal Infusion', 'Cardamom Essence'],
     shelfLife: '5 Days',
     isVeg: true,
   },
 
-  // 5. Shahi Badam Halwa Burfi (From /items/sweet-5.jfif)
+  // 5. Shahi Badam Halwa Burfi (From /items/sweet-5.jpg)
   {
     id: 'badam-halwa-burfi',
     name: 'Shahi Badam Halwa Burfi',
@@ -125,14 +125,14 @@ const RAW_PRODUCTS = [
       { label: '400 G', multiplier: 1.85, price: 350 },
       { label: '800 G', multiplier: 3.5, price: 660 },
     ],
-    image: '/items/sweet-5.jfif',
+    image: '/items/sweet-5.jpg',
     description: 'Rich slow-roasted grain halwa burfi fudge cooked in pure bilona ghee, loaded with crunchy slivered California almonds on top.',
     ingredients: ['Pure Desi Cow Ghee', 'Wheat Malt & Lentil Base', 'California Almonds', 'Organic Cane Sugar', 'Cardamom'],
     shelfLife: '20 Days',
     isVeg: true,
   },
 
-  // 6. Imperial Stuffed Parwal Sweet (From /items/sweet-6.jfif)
+  // 6. Imperial Stuffed Parwal Sweet (From /items/sweet-6.jpg)
   {
     id: 'stuffed-parwal-mithai',
     name: 'Imperial Stuffed Parwal Sweet',
@@ -151,14 +151,14 @@ const RAW_PRODUCTS = [
       { label: '500 G', multiplier: 1.85, price: 570 },
       { label: '1 KG', multiplier: 3.5, price: 1080 },
     ],
-    image: '/items/sweet-6.jfif',
+    image: '/items/sweet-6.jpg',
     description: 'A prized imperial confection of tender candied pointed gourd stuffed with saffron-infused pistachio mawa and adorned with silver vark leaf.',
     ingredients: ['Candied Tender Parwal', 'Rich Reduced Mawa (Khoya)', 'Iranian Pistachios', 'Saffron', 'Silver Foil (Vark)'],
     shelfLife: '10 Days',
     isVeg: true,
   },
 
-  // 7. Traditional Spiced Chegodilu (From /items/Savouries-1.jfif)
+  // 7. Traditional Spiced Chegodilu (From /items/Savouries-1.jpg)
   {
     id: 'spiced-chegodilu',
     name: 'Traditional Spiced Chegodilu (Ring Murukku)',
@@ -175,14 +175,14 @@ const RAW_PRODUCTS = [
       { label: '250 G', multiplier: 1.6, price: 175 },
       { label: '500 G', multiplier: 3, price: 330 },
     ],
-    image: '/items/Savouries-1.jfif',
+    image: '/items/Savouries-1.jpg',
     description: 'Crisp, crunchy golden rings prepared with roasted rice flour, sesame seeds, cumin, and hint of red chilli in wood-pressed native oil.',
     ingredients: ['Stone Ground Rice Flour', 'White Sesame Seeds', 'Cumin Seeds', 'Asafoetida', 'Cold-Pressed Groundnut Oil'],
     shelfLife: '45 Days',
     isVeg: true,
   },
 
-  // 8. Murari Golden Paniyaram Bites (From /items/Savouries-2.jfif)
+  // 8. Murari Golden Paniyaram Bites (From /items/Savouries-2.jpg)
   {
     id: 'hot-golden-paniyaram',
     name: 'Murari Golden Paniyaram Bites',
@@ -199,14 +199,14 @@ const RAW_PRODUCTS = [
       { label: '300 G', multiplier: 1.8, price: 178 },
       { label: '600 G', multiplier: 3.2, price: 316 },
     ],
-    image: '/items/Savouries-2.jfif',
+    image: '/items/Savouries-2.jpg',
     description: 'Crispy golden outer crust with a soft, pillowy spiced center, tempered with fresh green chillies, curry leaves, and ginger.',
     ingredients: ['Fermented Lentil & Rice Batter', 'Fresh Curry Leaves', 'Ginger', 'Green Chillies', 'Native Oil'],
     shelfLife: '3 Days',
     isVeg: true,
   },
 
-  // 9. Grand Savoury Feast Platter (From /items/Savouries-5.jfif)
+  // 9. Grand Savoury Feast Platter (From /items/Savouries-5.jpg)
   {
     id: 'grand-savoury-feast',
     name: 'Grand Savoury Feast & Teatime Platter',
@@ -223,14 +223,14 @@ const RAW_PRODUCTS = [
       { label: '700 G (Serves 5-6)', multiplier: 1.85, price: 440 },
       { label: '1.2 KG (Grand Party)', multiplier: 3, price: 720 },
     ],
-    image: '/items/Savouries-5.jfif',
+    image: '/items/Savouries-5.jpg',
     description: 'An abundant royal platter of freshly made samosas, savoury rolls, khasta kachoris, puff pastries, and spicy dipping chutneys.',
     ingredients: ['Mini Potato Samosas', 'Moong Dal Kachoris', 'Crispy Spring Rolls', 'Mint Chutney', 'Imli Saunth'],
     shelfLife: '2 Days',
     isVeg: true,
   },
 
-  // 10. The Executive Gourmet Hamper Trunk (From /items/gift-1.jfif)
+  // 10. The Executive Gourmet Hamper Trunk (From /items/gift-1.jpg)
   {
     id: 'executive-gourmet-trunk',
     name: 'The Executive Gourmet Hamper Trunk',
@@ -247,14 +247,14 @@ const RAW_PRODUCTS = [
       { label: 'Grand Trunk (1.8 KG)', multiplier: 1.7, price: 2450 },
       { label: 'Presidential (2.8 KG)', multiplier: 2.5, price: 3600 },
     ],
-    image: '/items/gift-1.jfif',
+    image: '/items/gift-1.jpg',
     description: 'A leatherette keepsake trunk packed with artisanal dry fruit preserves, roasted nuts, royal sweets, imported condiments, and scented candles.',
     ingredients: ['Assorted Signature Sweets', 'Roasted Afghani Almonds & Cashews', 'Gourmet Preserves', 'Brass Tea Sifter'],
     shelfLife: '30 Days',
     isVeg: true,
   },
 
-  // 11. Utsav Macrame Festive Sweet Hamper (From /items/gift-2.jfif)
+  // 11. Utsav Macrame Festive Sweet Hamper (From /items/gift-2.jpg)
   {
     id: 'utsav-macrame-basket',
     name: 'Utsav Macrame Festive Sweet Hamper',
@@ -271,14 +271,14 @@ const RAW_PRODUCTS = [
       { label: 'Royal Basket (1.4 KG)', multiplier: 1.7, price: 2150 },
       { label: 'Imperial Basket (2.2 KG)', multiplier: 2.5, price: 3100 },
     ],
-    image: '/items/gift-2.jfif',
+    image: '/items/gift-2.jpg',
     description: 'Handwoven macrame basket adorned with silk flowers and brass diyas, packed with Murari Kaju Katli, Cham Cham, and spiced dry fruits.',
     ingredients: ['Kaju Katli Box', 'Pure Ghee Sweets', 'California Almond Kernels', 'Brass Handcrafted Diyas'],
     shelfLife: '25 Days',
     isVeg: true,
   },
 
-  // 12. Celebration Treats & Munchies Gift Box (From /items/gift-3.jfif)
+  // 12. Celebration Treats & Munchies Gift Box (From /items/gift-3.jpg)
   {
     id: 'celebration-snack-pack',
     name: 'Celebration Treats & Munchies Gift Box',
@@ -294,14 +294,14 @@ const RAW_PRODUCTS = [
       { label: 'Standard Box (600 G)', multiplier: 1, price: 650 },
       { label: 'Jumbo Box (1.2 KG)', multiplier: 1.8, price: 1170 },
     ],
-    image: '/items/gift-3.jfif',
+    image: '/items/gift-3.jpg',
     description: 'Vibrant celebration hamper filled with crunch snacks, sweet bites, chocolates, and premium beverages for family gatherings.',
     ingredients: ['Assorted Savouries', 'Chocolates & Wafers', 'Teatime Crunch Bites'],
     shelfLife: '30 Days',
     isVeg: true,
   },
 
-  // 13. Royal Celebration Sweet Gift Bouquet (From /items/gift-4.jfif)
+  // 13. Royal Celebration Sweet Gift Bouquet (From /items/gift-4.jpg)
   {
     id: 'festive-treat-bouquet',
     name: 'Royal Celebration Sweet Gift Bouquet',
@@ -317,14 +317,14 @@ const RAW_PRODUCTS = [
       { label: 'Bouquet Pack (500 G)', multiplier: 1, price: 850 },
       { label: 'Grand Bouquet (1 KG)', multiplier: 1.75, price: 1480 },
     ],
-    image: '/items/gift-4.jfif',
+    image: '/items/gift-4.jpg',
     description: 'Stylishly arranged floral basket packed with gift vouchers, artisanal mithai bites, and decorative accents for memorable gifting.',
     ingredients: ['Artisanal Sweet Squares', 'Festive Greeting Card', 'Decorative Keepsake Planter'],
     shelfLife: '20 Days',
     isVeg: true,
   },
 
-  // 14. Maharaja Wedding Trousseau Sweet Hamper (From /items/gift-5.jfif)
+  // 14. Maharaja Wedding Trousseau Sweet Hamper (From /items/gift-5.jpg)
   {
     id: 'royal-wedding-trousseau',
     name: 'Maharaja Wedding Trousseau Sweet Hamper',
@@ -340,7 +340,7 @@ const RAW_PRODUCTS = [
       { label: 'Heritage Hamper (1.5 KG)', multiplier: 1, price: 2200 },
       { label: 'Maharaja Hamper (2.8 KG)', multiplier: 1.75, price: 3850 },
     ],
-    image: '/items/gift-5.jfif',
+    image: '/items/gift-5.jpg',
     description: 'Grand wicker basket draped in royal gold tissue and floral crest, filled with Besan Ladoo, Calcutta Chevda, roasted almonds, and luxury sweets.',
     ingredients: ['Pure Ghee Besan Ladoo', 'Calcutta Chevda Savoury', 'Premium Almonds', 'Dry Fruit Delicacies'],
     shelfLife: '30 Days',
@@ -360,7 +360,7 @@ const RAW_PRODUCTS = [
     weights: [
       { label: '100 G', multiplier: 1, price: 99 },
     ],
-    image: '/items/Savouries-2.jfif',
+    image: '/items/Savouries-2.jpg',
     description: 'Perfect bite-sized sampler of our daily fresh savouries and mini bites. Ideal for travel and sudden tea cravings.',
     ingredients: ['Spiced Chegodilu', 'Golden Bites', 'Roasted Peanuts'],
     shelfLife: '20 Days',

@@ -97,7 +97,6 @@ export default function Footer({ onNavigate }) {
               <li><a href="#sweets" onClick={(e) => { e.preventDefault(); onNavigate('#sweets'); }} style={{ color: 'rgba(250, 247, 242, 0.85)', textDecoration: 'none' }}>Best Sellers</a></li>
               <li><a href="#sweets" onClick={(e) => { e.preventDefault(); onNavigate('#sweets'); }} style={{ color: 'rgba(250, 247, 242, 0.85)', textDecoration: 'none' }}>Pure Ghee Sweets</a></li>
               <li><a href="#savouries" onClick={(e) => { e.preventDefault(); onNavigate('#savouries'); }} style={{ color: 'rgba(250, 247, 242, 0.85)', textDecoration: 'none' }}>Savouries & Namkeen</a></li>
-              <li><a href="#masterpieces" onClick={(e) => { e.preventDefault(); onNavigate('#masterpieces'); }} style={{ color: 'rgba(250, 247, 242, 0.85)', textDecoration: 'none' }}>Masterpieces</a></li>
               <li><a href="#kitchen" onClick={(e) => { e.preventDefault(); onNavigate('#kitchen'); }} style={{ color: 'rgba(250, 247, 242, 0.85)', textDecoration: 'none' }}>The Kitchen Menu</a></li>
               <li><a href="#gifting" onClick={(e) => { e.preventDefault(); onNavigate('#gifting'); }} style={{ color: 'rgba(250, 247, 242, 0.85)', textDecoration: 'none' }}>Royal Gift Boxes</a></li>
             </ul>
@@ -132,8 +131,9 @@ export default function Footer({ onNavigate }) {
           {/* "We're always here to help you" - Sleek Wide Landscape Card (Width badha kr, height kum krke) */}
           <div
             style={{
-              flex: '1 1 390px',
+              flex: '1 1 280px',
               maxWidth: '490px',
+              width: '100%',
               background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(198, 137, 40, 0.08) 100%)',
               borderRadius: '20px',
               padding: '18px 22px',

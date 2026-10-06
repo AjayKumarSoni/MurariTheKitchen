@@ -6,7 +6,6 @@ import BrandStory from './components/BrandStory';
 import CategoryShowcase from './components/CategoryShowcase';
 import ProductSection from './components/ProductSection';
 import SavouriesSection from './components/SavouriesSection';
-import MasterpieceShowcase from './components/MasterpieceShowcase';
 import ReelShowcase from './components/ReelShowcase';
 import KitchenMenuSection from './components/KitchenMenuSection';
 import GiftingSection from './components/GiftingSection';
@@ -70,7 +69,7 @@ export default function App() {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'sweets', 'savouries', 'masterpieces', 'reels', 'kitchen', 'gifting', 'outlets', 'contact'];
+      const sections = ['home', 'about', 'sweets', 'savouries', 'reels', 'kitchen', 'gifting', 'outlets', 'contact'];
       const scrollPos = window.scrollY + 140;
 
       for (const sectionId of sections) {
@@ -204,8 +203,16 @@ export default function App() {
         <CategoryShowcase
           selectedCategory={selectedCategory}
           onSelectCategory={(catId) => {
-            setSelectedCategory(catId);
-            scrollToSection('#sweets');
+            if (catId === 'kitchen') {
+              scrollToSection('#kitchen');
+            } else if (catId === 'savouries') {
+              scrollToSection('#savouries');
+            } else if (catId === 'gifting') {
+              scrollToSection('#gifting');
+            } else {
+              setSelectedCategory(catId);
+              scrollToSection('#sweets');
+            }
           }}
         />
 
@@ -227,15 +234,7 @@ export default function App() {
           currency={currency}
         />
 
-        {/* 8. Masterpieces Showcase (Reference Image 5) */}
-        <MasterpieceShowcase
-          products={PRODUCTS}
-          onAddToCart={handleAddToCart}
-          onQuickView={(prod) => setQuickViewProduct(prod)}
-          currency={currency}
-        />
-
-        {/* 9. Murari Live Reels & Kitchen Stories (3D Perspective Showcase) */}
+        {/* 8. Murari Live Reels & Kitchen Stories (3D Perspective Showcase) */}
         <ReelShowcase
           onAddToCart={handleAddToCart}
           currency={currency}

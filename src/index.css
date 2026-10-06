@@ -269,3 +269,78 @@ h1, h2, h3, h4 {
     scroll-behavior: auto !important;
   }
 }
+
+/* ========================================================
+   MOBILE RESPONSIVENESS & CENTERING OPTIMIZATIONS
+   ======================================================== */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 7vw, 2.3rem) !important;
+    text-align: center !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.94rem !important;
+    text-align: center !important;
+    padding: 0 8px !important;
+  }
+
+  .hero-floating-badge {
+    display: none !important;
+  }
+
+  .hero-text-col {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .hero-cta-group {
+    justify-content: center !important;
+  }
+
+  .hero-stats-group {
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 16px !important;
+  }
+
+  .hero-flip-card-wrapper {
+    height: 380px !important;
+    max-width: 100% !important;
+  }
+
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .currency-badge-desktop {
+    display: none !important;
+  }
+
+  .reel-arrow-left {
+    left: 4px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .reel-arrow-right {
+    right: 4px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -84,9 +84,9 @@ export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '28px',
-            marginBottom: '48px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '24px',
+            marginBottom: '40px',
           }}
         >
           {giftBoxes.map((box, idx) => (
@@ -178,7 +178,7 @@ export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
           style={{
             background: 'linear-gradient(135deg, #400612 0%, #630C1E 100%)',
             borderRadius: '24px',
-            padding: '36px 40px',
+            padding: 'clamp(24px, 4vw, 36px) clamp(20px, 4vw, 40px)',
             color: '#FAF7F2',
             display: 'flex',
             alignItems: 'center',

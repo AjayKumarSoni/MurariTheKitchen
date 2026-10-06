@@ -54,9 +54,10 @@ export default function BrandStory() {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '12px',
-            marginBottom: '40px',
+            gap: '8px',
+            marginBottom: '32px',
             flexWrap: 'wrap',
+            padding: '0 4px',
           }}
         >
           {storyPillars.map((pillar, idx) => (
@@ -65,9 +66,9 @@ export default function BrandStory() {
               onClick={() => setActiveTab(idx)}
               style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: '0.92rem',
+                fontSize: '0.88rem',
                 fontWeight: 600,
-                padding: '10px 22px',
+                padding: '9px 18px',
                 borderRadius: '999px',
                 border: activeTab === idx ? '1px solid #C68928' : '1px solid rgba(99, 12, 30, 0.12)',
                 backgroundColor: activeTab === idx ? '#630C1E' : '#FFFFFF',
@@ -105,12 +106,12 @@ export default function BrandStory() {
               transition={{ duration: 0.4 }}
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                 alignItems: 'center',
               }}
             >
               {/* Left Column: Image with Mor Pankh Crest */}
-              <div style={{ position: 'relative', height: '100%', minHeight: '380px' }}>
+              <div style={{ position: 'relative', height: '100%', minHeight: 'clamp(260px, 35vw, 380px)' }}>
                 <img
                   src={storyPillars[activeTab].image}
                   alt={storyPillars[activeTab].title}
@@ -141,7 +142,7 @@ export default function BrandStory() {
               </div>
 
               {/* Right Column: Detailed Story Content */}
-              <div style={{ padding: '40px 36px' }}>
+              <div style={{ padding: 'clamp(24px, 4vw, 40px) clamp(20px, 4vw, 36px)' }}>
                 <h3
                   style={{
                     fontFamily: 'var(--font-heading)',

@@ -6,7 +6,6 @@ export const CATEGORIES = [
   { id: 'bestsellers', name: 'Best Sellers', icon: '★' },
   { id: 'sweets', name: 'Pure Ghee Sweets', icon: '❖' },
   { id: 'savouries', name: 'Traditional Savouries', icon: '⚜' },
-  { id: 'masterpieces', name: 'Signature Masterpieces', icon: '◆' },
   { id: 'gifting', name: 'Royal Gift Boxes', icon: '✧' },
   { id: 'express', name: '₹99 Fresh Bestsellers', icon: '✹' },
 ];
@@ -136,7 +135,7 @@ const RAW_PRODUCTS = [
   {
     id: 'stuffed-parwal-mithai',
     name: 'Imperial Stuffed Parwal Sweet',
-    category: 'masterpieces',
+    category: 'sweets',
     isBestSeller: true,
     isMasterpiece: true,
     badge: 'ROYAL HERITAGE MASTERPIECE',

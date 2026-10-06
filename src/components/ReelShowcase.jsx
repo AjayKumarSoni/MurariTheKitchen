@@ -219,6 +219,7 @@ export default function ReelShowcase() {
           {/* Left Arrow */}
           <button
             onClick={handlePrev}
+            className="reel-arrow-left"
             style={{
               position: 'absolute',
               left: 'clamp(10px, 3vw, 40px)',
@@ -244,6 +245,7 @@ export default function ReelShowcase() {
           {/* Right Arrow */}
           <button
             onClick={handleNext}
+            className="reel-arrow-right"
             style={{
               position: 'absolute',
               right: 'clamp(10px, 3vw, 40px)',

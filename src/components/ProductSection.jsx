@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from './ProductCard';
 import { CATEGORIES } from '../data/products';
 
@@ -11,13 +11,21 @@ export default function ProductSection({
   onQuickView,
   currency
 }) {
+  const [showAll, setShowAll] = useState(false);
+
+  // Reset showAll when category filter changes
+  useEffect(() => {
+    setShowAll(false);
+  }, [selectedCategory]);
+
   // Filter products based on selected tab
   const filteredProducts = products.filter((p) => {
     if (selectedCategory === 'all') return true;
     if (selectedCategory === 'bestsellers') return p.isBestSeller;
-    if (selectedCategory === 'masterpieces') return p.isMasterpiece;
     return p.category === selectedCategory;
   });
+
+  const visibleProducts = showAll ? filteredProducts : filteredProducts.slice(0, 4);
 
   return (
     <section id="sweets" style={{ padding: '60px 0 80px', backgroundColor: '#FAF7F2' }}>
@@ -95,11 +103,11 @@ export default function ProductSection({
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(270px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
             gap: '24px',
           }}
         >
-          {filteredProducts.map((product) => (
+          {visibleProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
@@ -109,6 +117,30 @@ export default function ProductSection({
             />
           ))}
         </div>
+
+        {/* Show More / Show Less Toggle Button */}
+        {filteredProducts.length > 4 && (
+          <div style={{ textAlign: 'center', marginTop: '36px' }}>
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              onClick={() => setShowAll((prev) => !prev)}
+              className="btn-gold"
+              style={{
+                fontSize: '0.94rem',
+                padding: '12px 32px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontWeight: 700,
+                boxShadow: '0 8px 24px rgba(198, 137, 40, 0.35)',
+              }}
+            >
+              <span>{showAll ? 'Show Less' : `Show More (${filteredProducts.length - 4} More Sweets)`}</span>
+              <span style={{ fontSize: '0.8rem', transform: showAll ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s ease' }}>▼</span>
+            </motion.button>
+          </div>
+        )}
 
         {/* Bottom Guarantee Banner */}
         <div

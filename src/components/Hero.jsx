@@ -31,6 +31,7 @@ export default function Hero({ onExploreSweets, onExploreKitchen, onExploreReels
         >
           {/* Left Column: Copy & CTAs */}
           <motion.div
+            className="hero-text-col"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -94,7 +95,7 @@ export default function Hero({ onExploreSweets, onExploreKitchen, onExploreReels
             </p>
 
             {/* CTAs */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
+            <div className="hero-cta-group" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
@@ -142,12 +143,14 @@ export default function Hero({ onExploreSweets, onExploreKitchen, onExploreReels
 
             {/* Micro Stats */}
             <div
+              className="hero-stats-group"
               style={{
                 display: 'flex',
                 gap: '28px',
                 marginTop: '40px',
                 paddingTop: '24px',
                 borderTop: '1px solid rgba(99, 12, 30, 0.1)',
+                flexWrap: 'wrap',
               }}
             >
               <div>
@@ -231,6 +234,7 @@ export default function Hero({ onExploreSweets, onExploreKitchen, onExploreReels
 
               {/* Flipping 3D Inner Wrapper */}
               <div
+                className="hero-flip-card-wrapper"
                 style={{
                   position: 'relative',
                   width: '100%',
@@ -410,8 +414,9 @@ export default function Hero({ onExploreSweets, onExploreKitchen, onExploreReels
               </div>
             </div>
 
-            {/* Floating Floating Accent Badge 1: Mysore Pak */}
+            {/* Floating Accent Badge 1: Mysore Pak */}
             <motion.div
+              className="hero-floating-badge"
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut' }}
               style={{
@@ -451,6 +456,7 @@ export default function Hero({ onExploreSweets, onExploreKitchen, onExploreReels
 
             {/* Floating Accent Badge 2: Daily Fresh */}
             <motion.div
+              className="hero-floating-badge"
               animate={{ y: [0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut', delay: 1 }}
               style={{

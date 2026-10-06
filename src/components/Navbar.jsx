@@ -219,6 +219,7 @@ export default function Navbar({
             
             {/* Currency Selector (like Anandhaas) */}
             <div
+              className="currency-badge-desktop"
               style={{
                 display: 'flex',
                 alignItems: 'center',

@@ -27,10 +27,10 @@ export default function CategoryShowcase({ onSelectCategory, selectedCategory })
       badgeColor: '#154D36',
     },
     {
-      id: 'masterpieces',
-      name: 'Royal Masterpieces',
-      tag: 'PREMIUM',
-      image: assetUrl('/items/sweet-6.jpg'),
+      id: 'kitchen',
+      name: 'The Kitchen Dining',
+      tag: 'MULTI-CUISINE',
+      image: assetUrl('/kitchen/murari_royal_thali.jpg'),
       badgeColor: '#8A152E',
     },
     {

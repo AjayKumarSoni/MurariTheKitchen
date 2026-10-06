@@ -122,6 +122,11 @@ export default function App() {
     }, isCategoryOpen ? 60 : 0);
   };
 
+  const handleOpenRange = (catId) => {
+    setRangeCategoryView(catId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Cart Operations
   const handleAddToCart = (item) => {
     setCart((prevCart) => {
@@ -234,22 +239,16 @@ export default function App() {
             }}
           />
 
-          {/* 5. Best Sellers & Sweets Section */}
+          {/* 5. Best Sellers & Sweets Section (4 Stylish Images) */}
           <ProductSection
             products={PRODUCTS}
-            selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
-            onAddToCart={handleAddToCart}
-            onQuickView={(prod) => setQuickViewProduct(prod)}
-            currency={currency}
+            onOpenRange={handleOpenRange}
           />
 
-          {/* 6. Savouries Showcase */}
+          {/* 6. Savouries Showcase (4 Stylish Images) */}
           <SavouriesSection
             products={PRODUCTS}
-            onAddToCart={handleAddToCart}
-            onQuickView={(prod) => setQuickViewProduct(prod)}
-            currency={currency}
+            onOpenRange={handleOpenRange}
           />
 
           {/* 7. Murari Live Reels & Kitchen Stories (3D Perspective Showcase) */}
@@ -258,10 +257,9 @@ export default function App() {
             currency={currency}
           />
 
-          {/* 8. The Kitchen Multi-Cuisine Menu */}
+          {/* 8. The Kitchen Multi-Cuisine Menu (4 Stylish Images) */}
           <KitchenMenuSection
-            onAddToCart={handleAddToCart}
-            currency={currency}
+            onOpenRange={handleOpenRange}
           />
 
           {/* 9. Royal Gifting & Hampers */}

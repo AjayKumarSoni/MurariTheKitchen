@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Utensils, Search, Plus, Check, Flame, Users, Sparkles, Package } from 'lucide-react';
 import { KITCHEN_CATEGORIES, KITCHEN_MENU } from '../data/kitchenMenu';
@@ -8,6 +8,12 @@ export default function KitchenMenuSection({ onAddToCart, currency = 'INR' }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [orderType, setOrderType] = useState('dine-in'); // 'dine-in' or 'parcel'
   const [addedItems, setAddedItems] = useState({});
+  const [showAll, setShowAll] = useState(false);
+
+  // Reset showAll when category or search changes
+  useEffect(() => {
+    setShowAll(false);
+  }, [activeCategory, searchTerm]);
 
   const currencyRate = currency === 'USD' ? 0.012 : currency === 'GBP' ? 0.0095 : 1;
   const currencySymbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : '₹';
@@ -18,6 +24,8 @@ export default function KitchenMenuSection({ onAddToCart, currency = 'INR' }) {
                           item.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const visibleMenu = showAll ? filteredMenu : filteredMenu.slice(0, 8);
 
   const handleAddItem = (dish) => {
     const parcelExtra = orderType === 'parcel' ? 10 : 0;
@@ -239,7 +247,7 @@ export default function KitchenMenuSection({ onAddToCart, currency = 'INR' }) {
             gap: '20px',
           }}
         >
-          {filteredMenu.map((dish, idx) => {
+          {visibleMenu.map((dish, idx) => {
             const isAdded = !!addedItems[dish.id];
             const parcelExtra = orderType === 'parcel' ? 10 : 0;
             const finalPrice = Math.round((dish.price + parcelExtra) * currencyRate);
@@ -415,6 +423,30 @@ export default function KitchenMenuSection({ onAddToCart, currency = 'INR' }) {
             );
           })}
         </div>
+
+        {/* Show More / Show Less Toggle Button */}
+        {filteredMenu.length > 8 && (
+          <div style={{ textAlign: 'center', marginTop: '36px' }}>
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              onClick={() => setShowAll((prev) => !prev)}
+              className="btn-gold"
+              style={{
+                fontSize: '0.94rem',
+                padding: '12px 32px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontWeight: 700,
+                boxShadow: '0 8px 24px rgba(198, 137, 40, 0.35)',
+              }}
+            >
+              <span>{showAll ? 'Show Less' : `Show More (${filteredMenu.length - 8} More Dishes)`}</span>
+              <span style={{ fontSize: '0.8rem', transform: showAll ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s ease' }}>▼</span>
+            </motion.button>
+          </div>
+        )}
 
         {/* Empty Search Result State */}
         {filteredMenu.length === 0 && (

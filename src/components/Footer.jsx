@@ -80,7 +80,7 @@ export default function Footer({ onNavigate }) {
               }}
             />
             <p style={{ fontSize: '0.86rem', color: 'rgba(250, 247, 242, 0.8)', lineHeight: 1.55, marginBottom: '16px' }}>
-              Handcrafting royal Indian sweets and pure delicacies with 100% pure desi cow ghee and authentic recipes since 1974.
+              Handcrafting royal Indian sweets and pure delicacies with 100% pure desi cow ghee and authentic recipes since 1952 (70+ Years Legacy).
             </p>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: 'rgba(231, 171, 72, 0.12)', border: '1px solid rgba(231, 171, 72, 0.25)', padding: '5px 12px', borderRadius: '999px' }}>
               <span className="veg-badge" style={{ backgroundColor: '#FFFFFF' }}></span>

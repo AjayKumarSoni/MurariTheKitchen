@@ -9,9 +9,9 @@ export default function BrandStory() {
   const storyPillars = [
     {
       title: 'The Sacred Heritage',
-      tag: 'Estd. 1974',
-      description: 'Murari is named after Lord Krishna. Since 1974, every sweet is made pure and fresh like temple prasad. Honest ingredients, zero shortcuts, and genuine family love.',
-      highlights: ['100% Pure & Fresh Daily', '50+ Years of Family Trust', 'No Artificial Preservatives'],
+      tag: 'Estd. 1952',
+      description: 'Murari is named after Lord Krishna. Since 1952, every sweet is made pure and fresh like temple prasad. Honest ingredients, zero shortcuts, and genuine family love.',
+      highlights: ['100% Pure & Fresh Daily', '70+ Years of Family Trust', 'No Artificial Preservatives'],
       image: assetUrl('/heritage/sacred-heritage.jpg'),
     },
     {
@@ -45,7 +45,7 @@ export default function BrandStory() {
           <span className="section-tag">Our Living Heritage</span>
           <h2 className="section-title">The Legend of Murari</h2>
           <p className="section-subtitle">
-            Over 50 years of trust. Handcrafting pure sweets and delicious food with authentic family recipes.
+            Over 70 years of trust. Handcrafting pure sweets and delicious food with authentic family recipes.
           </p>
         </motion.div>
 

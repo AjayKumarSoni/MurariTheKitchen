@@ -25,12 +25,13 @@ export default function Navbar({
 
   const navItems = [
     { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
+    { label: 'Shop Range', href: '#shop-range' },
     { label: 'Sweets', href: '#sweets' },
     { label: 'Savouries', href: '#savouries' },
     { label: 'Kitchen Menu', href: '#kitchen', highlight: true },
     { label: 'Gifting', href: '#gifting' },
     { label: 'Outlets', href: '#outlets' },
+    { label: 'About Us', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
 

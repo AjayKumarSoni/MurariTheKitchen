@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import IntroSplash from './components/IntroSplash';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import BrandStory from './components/BrandStory';
+import AboutSection from './components/AboutSection';
 import CategoryShowcase from './components/CategoryShowcase';
 import ProductSection from './components/ProductSection';
 import SavouriesSection from './components/SavouriesSection';
@@ -69,7 +69,7 @@ export default function App() {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'sweets', 'savouries', 'reels', 'kitchen', 'gifting', 'outlets', 'contact'];
+      const sections = ['home', 'shop-range', 'sweets', 'savouries', 'reels', 'kitchen', 'gifting', 'about', 'outlets', 'contact'];
       const scrollPos = window.scrollY + 140;
 
       for (const sectionId of sections) {
@@ -196,10 +196,7 @@ export default function App() {
           onExploreReels={() => scrollToSection('#reels')}
         />
 
-        {/* 4. Brand Legacy & Bilona Craft Story */}
-        <BrandStory />
-
-        {/* 5. Shop By Category Showcase */}
+        {/* 4. Shop Our Range Horizontal Scroll Block (Reference Image 1) */}
         <CategoryShowcase
           selectedCategory={selectedCategory}
           onSelectCategory={(catId) => {
@@ -216,7 +213,7 @@ export default function App() {
           }}
         />
 
-        {/* 6. Best Sellers & Sweets Section */}
+        {/* 5. Best Sellers & Sweets Section */}
         <ProductSection
           products={PRODUCTS}
           selectedCategory={selectedCategory}
@@ -226,7 +223,7 @@ export default function App() {
           currency={currency}
         />
 
-        {/* 7. Savouries Showcase (Reference Image 4) */}
+        {/* 6. Savouries Showcase */}
         <SavouriesSection
           products={PRODUCTS}
           onAddToCart={handleAddToCart}
@@ -234,31 +231,34 @@ export default function App() {
           currency={currency}
         />
 
-        {/* 8. Murari Live Reels & Kitchen Stories (3D Perspective Showcase) */}
+        {/* 7. Murari Live Reels & Kitchen Stories (3D Perspective Showcase) */}
         <ReelShowcase
           onAddToCart={handleAddToCart}
           currency={currency}
         />
 
-        {/* 10. The Kitchen Multi-Cuisine Menu (Menu Images 9-16) */}
+        {/* 8. The Kitchen Multi-Cuisine Menu */}
         <KitchenMenuSection
           onAddToCart={handleAddToCart}
           currency={currency}
         />
 
-        {/* 10. Royal Gifting & Hampers */}
+        {/* 9. Royal Gifting & Hampers */}
         <GiftingSection
           onAddToCart={handleAddToCart}
           currency={currency}
         />
 
-        {/* 11. Hallmark Brand Pillars */}
+        {/* 10. Hallmark Brand Pillars */}
         <WhyMurari />
 
-        {/* 12. Testimonials (Reference Image 6) */}
+        {/* 11. Testimonials */}
         <Testimonials />
 
-        {/* 13. Store Outlets / Visit Us (Reference Image 7) */}
+        {/* 12. Authentic About Us Section (Estd. 1952 in Raigarh, Chhattisgarh) */}
+        <AboutSection />
+
+        {/* 13. Store Outlets / Visit Us */}
         <StoreLocator />
 
       </main>

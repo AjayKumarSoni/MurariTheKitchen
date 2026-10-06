@@ -28,7 +28,7 @@ export default function ProductSection({
   const visibleProducts = showAll ? filteredProducts : filteredProducts.slice(0, 4);
 
   return (
-    <section id="sweets" style={{ padding: '60px 0 80px', backgroundColor: '#FAF7F2' }}>
+    <section id="sweets" style={{ padding: '60px 0 20px', backgroundColor: '#FAF7F2' }}>
       <div className="container">
         
         {/* Title Header with Reference Diamonds */}
@@ -145,7 +145,7 @@ export default function ProductSection({
         {/* Bottom Guarantee Banner */}
         <div
           style={{
-            marginTop: '50px',
+            marginTop: '24px',
             background: '#FFFFFF',
             border: '1.5px dashed rgba(198, 137, 40, 0.4)',
             borderRadius: '16px',

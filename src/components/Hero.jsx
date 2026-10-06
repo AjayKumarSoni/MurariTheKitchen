@@ -154,7 +154,7 @@ export default function Hero({ onExploreSweets, onExploreKitchen, onExploreReels
               }}
             >
               <div>
-                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', fontWeight: 700, color: '#630C1E' }}>50+ Yrs</p>
+                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', fontWeight: 700, color: '#630C1E' }}>70+ Yrs</p>
                 <p style={{ fontSize: '0.8rem', color: '#6C5E57', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Heritage Legacy</p>
               </div>
               <div style={{ width: '1px', background: 'rgba(99, 12, 30, 0.12)' }}></div>

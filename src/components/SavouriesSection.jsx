@@ -6,7 +6,7 @@ export default function SavouriesSection({ products, onAddToCart, onQuickView, c
   const savouries = products.filter((p) => p.category === 'savouries');
 
   return (
-    <section id="savouries" style={{ padding: '80px 0', backgroundColor: '#FAF7F2' }}>
+    <section id="savouries" style={{ padding: '24px 0 60px', backgroundColor: '#FAF7F2' }}>
       <div className="container">
         
         {/* Section Heading matching Reference Image 4 */}

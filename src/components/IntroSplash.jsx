@@ -146,7 +146,7 @@ export default function IntroSplash({ onFinish }) {
                 }}
               >
                 <span style={{ width: '40px', height: '1px', background: 'rgba(198, 137, 40, 0.5)' }}></span>
-                <span style={{ color: '#C68928', fontSize: '0.8rem' }}>✦ ESTD. 1974 ✦</span>
+                <span style={{ color: '#C68928', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.08em' }}>✦ ESTD. 1952 • 70+ YEARS LEGACY ✦</span>
                 <span style={{ width: '40px', height: '1px', background: 'rgba(198, 137, 40, 0.5)' }}></span>
               </div>
             </motion.div>

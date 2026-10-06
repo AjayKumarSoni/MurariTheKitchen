@@ -1,190 +1,308 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { assetUrl } from '../utils/assetUrl';
 
 export default function CategoryShowcase({ onSelectCategory, selectedCategory }) {
+  const scrollContainerRef = useRef(null);
+
   const categories = [
-    {
-      id: 'express',
-      name: '₹99 Store',
-      tag: 'DAILY FRESH',
-      image: assetUrl('/items/Savouries-2.jpg'),
-      badgeColor: '#630C1E',
-    },
     {
       id: 'sweets',
       name: 'Pure Ghee Sweets',
-      tag: 'HANDCRAFTED',
+      count: '8 Products',
+      target: 'sweets',
       image: assetUrl('/items/sweet-1.jpg'),
-      badgeColor: '#C68928',
+    },
+    {
+      id: 'gifting',
+      name: 'Sweets Gifting',
+      count: '5 Products',
+      target: 'gifting',
+      image: assetUrl('/items/gift-2.jpg'),
     },
     {
       id: 'savouries',
-      name: 'Crispy Savouries',
-      tag: 'GROUNDNUT OIL',
+      name: 'Traditional Savouries',
+      count: '6 Products',
+      target: 'savouries',
       image: assetUrl('/items/Savouries-1.jpg'),
-      badgeColor: '#154D36',
     },
     {
       id: 'kitchen',
       name: 'The Kitchen Dining',
-      tag: 'MULTI-CUISINE',
+      count: '14 Products',
+      target: 'kitchen',
       image: assetUrl('/kitchen/murari_royal_thali.jpg'),
-      badgeColor: '#8A152E',
     },
     {
-      id: 'gifting',
-      name: 'Royal Gifting',
-      tag: 'FESTIVE HAMPERS',
-      image: assetUrl('/items/gift-2.jpg'),
-      badgeColor: '#520C1C',
+      id: 'express',
+      name: '₹99 Fresh Bestsellers',
+      count: '4 Products',
+      target: 'express',
+      image: assetUrl('/items/Savouries-2.jpg'),
+    },
+    {
+      id: 'dryfruits',
+      name: 'Royal Dry Fruits & Hampers',
+      count: '5 Products',
+      target: 'gifting',
+      image: assetUrl('/items/gift-1.jpg'),
+    },
+    {
+      id: 'milk-delights',
+      name: 'Bengali & Milk Sweets',
+      count: '6 Products',
+      target: 'sweets',
+      image: assetUrl('/items/sweet-3.jpg'),
     },
   ];
 
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = direction === 'left' ? -320 : 320;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const handleCardClick = (cat) => {
+    if (onSelectCategory) {
+      onSelectCategory(cat.target);
+    }
+  };
+
   return (
-    <section style={{ padding: '60px 0 20px', backgroundColor: '#FAF7F2' }}>
-      <div className="container">
+    <section
+      id="shop-range"
+      style={{
+        padding: '50px 0 30px',
+        backgroundColor: '#FAF7F2',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      <div className="container" style={{ paddingLeft: '20px', paddingRight: '20px' }}>
         
-        {/* Header with decorative diamonds like reference */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          style={{ textAlign: 'center', marginBottom: '36px' }}
+        {/* Header Bar matching Reference Image 1 */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: '28px',
+          }}
         >
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
-            <span style={{ color: '#630C1E', fontSize: '1.1rem' }}>❖</span>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <h2
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
+                fontSize: 'clamp(2.1rem, 3.8vw, 3rem)',
                 fontWeight: 600,
-                color: '#630C1E',
+                color: '#2A1F1D',
+                letterSpacing: '-0.02em',
+                margin: 0,
+                lineHeight: 1.15,
               }}
             >
-              Shop By Category
+              Shop Our Range
             </h2>
-            <span style={{ color: '#630C1E', fontSize: '1.1rem' }}>❖</span>
-          </div>
-          <p style={{ color: '#6C5E57', fontSize: '0.98rem', marginTop: '4px' }}>
-            Select from our curated collections of pure ghee confections and crunch savouries
-          </p>
-        </motion.div>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.95rem',
+                color: '#706059',
+                margin: '6px 0 0',
+              }}
+            >
+              Swipe through our signature pure ghee sweets, native snacks, and dining specials
+            </p>
+          </motion.div>
 
-        {/* Categories Row */}
+          {/* Navigation Arrows for Side Scroll */}
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <button
+              onClick={() => scroll('left')}
+              aria-label="Scroll Left"
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '50%',
+                border: '1.5px solid rgba(99, 12, 30, 0.2)',
+                backgroundColor: '#FFFFFF',
+                color: '#630C1E',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 3px 10px rgba(0,0,0,0.06)',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#630C1E';
+                e.currentTarget.style.color = '#FFFFFF';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#FFFFFF';
+                e.currentTarget.style.color = '#630C1E';
+              }}
+            >
+              <ChevronLeft size={22} />
+            </button>
+
+            <button
+              onClick={() => scroll('right')}
+              aria-label="Scroll Right"
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '50%',
+                border: '1.5px solid rgba(99, 12, 30, 0.2)',
+                backgroundColor: '#FFFFFF',
+                color: '#630C1E',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 3px 10px rgba(0,0,0,0.06)',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#630C1E';
+                e.currentTarget.style.color = '#FFFFFF';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#FFFFFF';
+                e.currentTarget.style.color = '#630C1E';
+              }}
+            >
+              <ChevronRight size={22} />
+            </button>
+          </div>
+        </div>
+
+        {/* Horizontal Side-Scrollable Container */}
         <div
+          ref={scrollContainerRef}
+          className="range-scroll-container"
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-            gap: '20px',
+            display: 'flex',
+            gap: '22px',
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            scrollBehavior: 'smooth',
+            WebkitOverflowScrolling: 'touch',
+            paddingBottom: '20px',
+            paddingTop: '6px',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
           }}
         >
-          {categories.map((cat, idx) => {
-            const isSelected = selectedCategory === cat.id;
-            return (
-              <motion.div
-                key={cat.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => onSelectCategory(cat.id)}
+          {categories.map((cat, idx) => (
+            <motion.div
+              key={cat.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: idx * 0.06 }}
+              whileHover={{ y: -8 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => handleCardClick(cat)}
+              style={{
+                flex: '0 0 250px',
+                scrollSnapAlign: 'start',
+                cursor: 'pointer',
+                userSelect: 'none',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {/* Tall Portrait Image Container matching Reference Image 1 */}
+              <div
                 style={{
-                  background: isSelected ? '#FFF8EB' : '#FFFFFF',
-                  border: isSelected ? '2px solid #C68928' : '1px solid rgba(99, 12, 30, 0.1)',
+                  width: '100%',
+                  height: '320px',
                   borderRadius: '20px',
-                  padding: '20px 16px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  boxShadow: isSelected ? '0 12px 30px rgba(198, 137, 40, 0.25)' : '0 4px 15px rgba(0,0,0,0.03)',
-                  transition: 'all 0.3s ease',
-                  position: 'relative',
                   overflow: 'hidden',
+                  position: 'relative',
+                  backgroundColor: '#EBE5DC',
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)',
+                  transition: 'box-shadow 0.3s ease',
                 }}
               >
-                {/* Badge Tag */}
-                <span
-                  style={{
-                    fontSize: '0.68rem',
-                    fontWeight: 800,
-                    letterSpacing: '0.08em',
-                    backgroundColor: cat.badgeColor,
-                    color: '#FFFFFF',
-                    padding: '3px 8px',
-                    borderRadius: '999px',
-                    marginBottom: '12px',
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  loading="lazy"
+                  onError={(e) => {
+                    if (e.target.src.endsWith('.jpg')) {
+                      e.target.src = e.target.src.replace('.jpg', '.jfif');
+                    }
                   }}
-                >
-                  {cat.tag}
-                </span>
-
-                {/* Circular Product Image */}
-                <div
                   style={{
-                    width: '100px',
-                    height: '100px',
-                    borderRadius: '50%',
-                    overflow: 'hidden',
-                    marginBottom: '14px',
-                    border: '3px solid #FAF7F2',
-                    boxShadow: '0 6px 16px rgba(0,0,0,0.08)',
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.5s ease',
                   }}
-                >
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    onError={(e) => {
-                      if (e.target.src.endsWith('.jpg')) {
-                        e.target.src = e.target.src.replace('.jpg', '.jfif');
-                      }
-                    }}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.4s ease',
-                    }}
-                  />
-                </div>
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.06)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }}
+                />
+              </div>
 
-                {/* Title */}
-                <h4
+              {/* Text Meta Below Card matching Reference Image 1 */}
+              <div style={{ textAlign: 'center', marginTop: '16px' }}>
+                <h3
                   style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: '1rem',
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: '1.28rem',
                     fontWeight: 700,
-                    color: '#231815',
-                    marginBottom: '6px',
+                    color: '#2A1F1D',
+                    margin: '0 0 4px',
+                    lineHeight: 1.25,
                   }}
                 >
                   {cat.name}
-                </h4>
-
-                <span
+                </h3>
+                <p
                   style={{
-                    fontSize: '0.8rem',
-                    fontWeight: 600,
-                    color: isSelected ? '#C68928' : '#8A152E',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.94rem',
+                    color: '#706059',
+                    fontWeight: 500,
+                    margin: 0,
                   }}
                 >
-                  Explore <ArrowRight size={12} />
-                </span>
-              </motion.div>
-            );
-          })}
+                  {cat.count}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>
+
+      <style>{`
+        .range-scroll-container::-webkit-scrollbar {
+          display: none;
+        }
+        @media (max-width: 600px) {
+          .range-scroll-container > div {
+            flex: 0 0 210px !important;
+          }
+          .range-scroll-container > div > div:first-child {
+            height: 270px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

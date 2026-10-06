@@ -1,16 +1,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { assetUrl } from '../utils/assetUrl';
 
-export default function SavouriesSection({ products, onOpenRange }) {
-  // Only 4 top savouries images
-  const savouries = products.filter((p) => p.category === 'savouries').slice(0, 4);
+export default function SavouriesSection({ onOpenRange }) {
+  // Using the authentic genuine images provided by user
+  const savouries = [
+    {
+      id: 'savoury-trio-jars',
+      name: 'Murari Royal Trio Namkeen Jars',
+      tag: 'VINTAGE BURLAP PRESENTATION',
+      image: assetUrl('/items/new_savouries_1.jpg'),
+      desc: 'Spicy namak pare, sweet shakkarpara, and crisp diamond mathri served in rustic burlap-banded jars.',
+    },
+    {
+      id: 'savoury-samosa-mathri-trio',
+      name: 'Festive Khasta Samosa & Mathri Trio',
+      tag: 'GOLDEN CRISPY FAVORITE',
+      image: assetUrl('/items/new_savouries_2.jpg'),
+      desc: 'Flaky mini samosas, golden bhujia sev, and crunchy spiced mathris crafted with wood-pressed oil.',
+    },
+    {
+      id: 'savoury-pillow-bites',
+      name: 'Shahi Crispy Pillow Crunch Bites',
+      tag: 'LIGHT & FLAKY PUFF',
+      image: assetUrl('/items/new_savouries_3.png'),
+      desc: 'Airy, crispy pillow-shaped savoury bites seasoned with Himalayan pink salt and roasted cumin.',
+    },
+    {
+      id: 'savoury-bakery-mathri',
+      name: 'Artisanal Teatime Mathri Clamshells',
+      tag: 'DAILY BAKED CRUNCH',
+      image: assetUrl('/items/new_savouries_4.jpg'),
+      desc: 'Freshly baked traditional khasta cookies & tea biscuits, stacked and sealed in airtight clamshell boxes.',
+    },
+  ];
 
   return (
     <section id="savouries" style={{ padding: '24px 0 60px', backgroundColor: '#FAF7F2' }}>
       <div className="container">
         
-        {/* Section Heading matching Reference Image 4 */}
+        {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -29,7 +59,7 @@ export default function SavouriesSection({ products, onOpenRange }) {
                 margin: 0,
               }}
             >
-              Savouries
+              Traditional Savouries
             </h2>
             <span style={{ color: '#630C1E', fontSize: '1.2rem' }}>❖</span>
           </div>
@@ -44,7 +74,7 @@ export default function SavouriesSection({ products, onOpenRange }) {
           </p>
         </motion.div>
 
-        {/* 4 Stylish Showcase Cards (Only 4 images, No price, No Add to Cart) */}
+        {/* 4 Stylish Showcase Cards (User's Genuine Uploaded Images, No Buy Buttons) */}
         <div
           style={{
             display: 'grid',
@@ -87,8 +117,12 @@ export default function SavouriesSection({ products, onOpenRange }) {
                   src={product.image}
                   alt={product.name}
                   onError={(e) => {
-                    if (e.target.src.endsWith('.jpg')) {
+                    if (!e.target.dataset.triedJfif && e.target.src.endsWith('.jpg')) {
+                      e.target.dataset.triedJfif = 'true';
                       e.target.src = e.target.src.replace('.jpg', '.jfif');
+                    } else if (!e.target.dataset.triedFallback) {
+                      e.target.dataset.triedFallback = 'true';
+                      e.target.src = assetUrl('/items/new_savouries_1.jpg');
                     }
                   }}
                   style={{
@@ -121,7 +155,7 @@ export default function SavouriesSection({ products, onOpenRange }) {
                     boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                   }}
                 >
-                  {product.badge || 'COLD PRESSED OIL'}
+                  {product.tag}
                 </div>
               </div>
 
@@ -147,7 +181,7 @@ export default function SavouriesSection({ products, onOpenRange }) {
                     margin: 0,
                   }}
                 >
-                  {product.tag || 'Crispy, crunchy and seasoned with authentic whole spices'}
+                  {product.desc}
                 </p>
               </div>
             </motion.div>

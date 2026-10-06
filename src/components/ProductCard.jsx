@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Star, Eye, Plus, Check } from 'lucide-react';
+import { assetUrl } from '../utils/assetUrl';
 
 export default function ProductCard({ product, onAddToCart, onQuickView, currency = 'INR' }) {
   const [selectedWeightIdx, setSelectedWeightIdx] = useState(0);
@@ -67,10 +68,18 @@ export default function ProductCard({ product, onAddToCart, onQuickView, currenc
           src={product.image}
           alt={product.name}
           onError={(e) => {
-            if (e.target.src.endsWith('.jfif')) {
-              e.target.src = e.target.src.replace('.jfif', '.jpg');
-            } else if (e.target.src.endsWith('.jpg')) {
-              e.target.src = e.target.src.replace('.jpg', '.jfif');
+            if (!e.target.dataset.triedFallback) {
+              e.target.dataset.triedFallback = '1';
+              if (e.target.src.endsWith('.jfif')) {
+                e.target.src = e.target.src.replace('.jfif', '.jpg');
+              } else if (e.target.src.endsWith('.jpg')) {
+                e.target.src = e.target.src.replace('.jpg', '.jfif');
+              } else {
+                e.target.src = assetUrl('/items/sweet-1.jpg');
+              }
+            } else if (e.target.dataset.triedFallback === '1') {
+              e.target.dataset.triedFallback = '2';
+              e.target.src = assetUrl('/items/sweet-1.jpg');
             }
           }}
           style={{

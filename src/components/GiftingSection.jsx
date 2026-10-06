@@ -1,53 +1,41 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gift, Check, Send, Sparkles, X } from 'lucide-react';
+import { Gift, Check, Send, Sparkles, X, ArrowRight } from 'lucide-react';
 import { assetUrl } from '../utils/assetUrl';
 
-export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
+export default function GiftingSection({ onOpenRange }) {
   const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', occasion: 'Wedding', quantity: '50' });
 
   const giftBoxes = [
     {
-      id: 'gift-maharaja',
-      title: 'Maharaja Wedding Trousseau Hamper',
-      price: 2200,
-      description: 'Grand wicker basket packed with Besan Ladoo, Calcutta Chevda, roasted almonds, and luxury sweets.',
-      image: assetUrl('/items/gift-5.jpg'),
-      badge: 'ROYAL WEDDING SPECIAL',
+      id: 'gift-peach-royal',
+      title: 'Peach Floral Heritage Mithai Box',
+      description: 'Embossed peach keepsake box filled with silver vark kaju katli, pistachio rolls, and royal mawa delicacies.',
+      image: assetUrl('/items/new_sweet_2.png'),
+      badge: 'ROYAL HERITAGE SPECIAL',
+    },
+    {
+      id: 'gift-teal-jali',
+      title: 'Teal & Gold Jali Festive Mithai Box',
+      description: 'Traditional Mughal jali patterned presentation box packed with pure bilona ghee confections and dry fruits.',
+      image: assetUrl('/items/new_sweet_3.png'),
+      badge: 'FESTIVE BESTSELLER',
     },
     {
       id: 'gift-utsav',
       title: 'Utsav Macrame Festive Sweet Hamper',
-      price: 1250,
       description: 'Handcrafted macrame basket with Murari Kaju Katli, Cham Cham, and roasted dry fruits.',
       image: assetUrl('/items/gift-2.jpg'),
-      badge: 'FESTIVE BESTSELLER',
+      badge: 'HANDCRAFTED BASKET',
     },
     {
       id: 'gift-corporate',
       title: 'The Executive Gourmet Hamper Trunk',
-      price: 1450,
       description: 'Keepsake luxury trunk packed with roasted Afghani nuts, pure sweets, and celebratory treats.',
       image: assetUrl('/items/gift-1.jpg'),
       badge: 'CORPORATE CHOICE',
-    },
-    {
-      id: 'gift-bouquet',
-      title: 'Royal Celebration Sweet Gift Bouquet',
-      price: 850,
-      description: 'Artistically arranged floral gift basket packed with artisanal mithai bites and festive accents.',
-      image: assetUrl('/items/gift-4.jpg'),
-      badge: 'SPECIAL OCCASION',
-    },
-    {
-      id: 'gift-treats',
-      title: 'Celebration Treats & Munchies Gift Box',
-      price: 650,
-      description: 'Vibrant celebration hamper filled with crunch snacks, sweet bites, and family party delicacies.',
-      image: assetUrl('/items/gift-3.jpg'),
-      badge: 'FAMILY FAVORITE',
     },
   ];
 
@@ -71,7 +59,7 @@ export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          style={{ textAlign: 'center', marginBottom: '48px' }}
+          style={{ textAlign: 'center', marginBottom: '44px' }}
         >
           <span className="section-tag">Royal Celebrations</span>
           <h2 className="section-title">The Murari Gifting Suite</h2>
@@ -80,100 +68,138 @@ export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
           </p>
         </motion.div>
 
-        {/* Gift Boxes Showcase */}
+        {/* 4 Stylish Gift Boxes Showcase (Only images, No Buy Buttons) */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
             gap: '24px',
-            marginBottom: '40px',
+            marginBottom: '32px',
           }}
         >
           {giftBoxes.map((box, idx) => (
             <motion.div
               key={box.id}
-              initial={{ opacity: 0, y: 35 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.55, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(64, 6, 18, 0.12)' }}
+              whileHover={{ y: -8 }}
+              onClick={() => onOpenRange && onOpenRange('gifting')}
               style={{
                 background: '#FFFFFF',
                 borderRadius: '20px',
                 border: '1.5px solid rgba(198, 137, 40, 0.25)',
                 overflow: 'hidden',
-                boxShadow: '0 10px 30px rgba(64, 6, 18, 0.06)',
+                boxShadow: '0 8px 24px rgba(64, 6, 18, 0.05)',
+                cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',
+                transition: 'all 0.3s ease',
               }}
             >
-              <div style={{ height: '220px', position: 'relative', overflow: 'hidden' }}>
+              {/* Box Image */}
+              <div style={{ height: '240px', position: 'relative', overflow: 'hidden', backgroundColor: '#F3EFEA' }}>
                 <img
                   src={box.image}
                   alt={box.title}
                   onError={(e) => {
-                    if (e.target.src.endsWith('.jpg')) {
+                    if (!e.target.dataset.triedJfif && e.target.src.endsWith('.jpg')) {
+                      e.target.dataset.triedJfif = 'true';
                       e.target.src = e.target.src.replace('.jpg', '.jfif');
+                    } else if (!e.target.dataset.triedFallback) {
+                      e.target.dataset.triedFallback = 'true';
+                      e.target.src = assetUrl('/items/new_sweet_2.png');
                     }
                   }}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.5s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.08)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }}
                 />
                 <span
                   style={{
                     position: 'absolute',
-                    top: '14px',
-                    left: '14px',
+                    top: '12px',
+                    left: '12px',
                     backgroundColor: '#630C1E',
                     color: '#F3C363',
-                    fontSize: '0.72rem',
+                    fontSize: '0.68rem',
                     fontWeight: 800,
                     letterSpacing: '0.08em',
                     padding: '4px 10px',
                     borderRadius: '999px',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                   }}
                 >
                   {box.badge}
                 </span>
               </div>
 
-              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.45rem', color: '#630C1E', marginBottom: '8px' }}>
+              {/* Title & Description */}
+              <div style={{ padding: '20px 18px', textAlign: 'center', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontSize: '1.35rem',
+                    fontWeight: 700,
+                    color: '#630C1E',
+                    margin: '0 0 6px',
+                    lineHeight: 1.25,
+                  }}
+                >
                   {box.title}
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: '#5C4F48', lineHeight: 1.5, marginBottom: '20px' }}>
+                <p
+                  style={{
+                    fontSize: '0.86rem',
+                    color: '#5C4F48',
+                    lineHeight: 1.5,
+                    margin: 0,
+                  }}
+                >
                   {box.description}
                 </p>
-
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
-                  <div>
-                    <span style={{ fontSize: '0.78rem', color: '#7E6E67', display: 'block' }}>Starts from</span>
-                    <span style={{ fontSize: '1.3rem', fontWeight: 800, color: '#231815' }}>₹{box.price}</span>
-                  </div>
-
-                  <button
-                    onClick={() => {
-                      onAddToCart({
-                        id: box.id,
-                        name: box.title,
-                        price: box.price,
-                        selectedWeight: 'Gift Presentation Box',
-                        image: box.image,
-                        category: 'gifting',
-                        isVeg: true,
-                      });
-                    }}
-                    className="btn-gold"
-                    style={{ fontSize: '0.86rem', padding: '8px 18px' }}
-                  >
-                    Add Gift Box
-                  </button>
-                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Custom Gifting Inquiry Banner */}
+        {/* CTA Button to Buy in Shop Our Range */}
+        <div style={{ textAlign: 'center', marginBottom: '44px' }}>
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={() => onOpenRange && onOpenRange('gifting')}
+            style={{
+              backgroundColor: '#630C1E',
+              color: '#FFFFFF',
+              border: 'none',
+              padding: '12px 32px',
+              borderRadius: '999px',
+              fontSize: '0.94rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              boxShadow: '0 6px 20px rgba(99, 12, 30, 0.25)',
+            }}
+          >
+            <span>Explore & Order Gift Hampers in Shop Range</span>
+            <ArrowRight size={16} />
+          </motion.button>
+        </div>
+
+        {/* Custom Gifting Inquiry Banner (For weddings / corporate custom quotes) */}
         <div
           style={{
             background: 'linear-gradient(135deg, #400612 0%, #630C1E 100%)',
@@ -218,36 +244,35 @@ export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
 
       </div>
 
-      {/* Gifting Inquiry Modal */}
+      {/* Inquiry Modal */}
       <AnimatePresence>
         {inquiryModalOpen && (
           <div
             style={{
               position: 'fixed',
               inset: 0,
-              zIndex: 9999,
-              backgroundColor: 'rgba(18, 5, 8, 0.75)',
+              backgroundColor: 'rgba(0, 0, 0, 0.7)',
               backdropFilter: 'blur(8px)',
+              zIndex: 100,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               padding: '20px',
             }}
-            onClick={() => setInquiryModalOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
               style={{
-                backgroundColor: '#FFFFFF',
+                backgroundColor: '#FFFDF9',
                 borderRadius: '24px',
                 padding: '36px',
+                maxWidth: '500px',
                 width: '100%',
-                maxWidth: '520px',
-                boxShadow: '0 25px 60px rgba(0,0,0,0.3)',
                 position: 'relative',
+                border: '2px solid #C68928',
+                boxShadow: '0 25px 60px rgba(0,0,0,0.4)',
               }}
             >
               <button
@@ -259,142 +284,150 @@ export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  color: '#6C5E57',
+                  color: '#630C1E',
                 }}
               >
-                <X size={20} />
+                <X size={24} />
               </button>
 
-              <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-                <span className="section-tag">Bespoke Concierge</span>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', color: '#630C1E' }}>
-                  Custom Gifting Inquiry
-                </h3>
-                <p style={{ fontSize: '0.86rem', color: '#6C5E57' }}>
-                  Fill in your requirements. Our gifting manager will contact you within 2 hours with samples and pricing.
-                </p>
-              </div>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', color: '#630C1E', marginBottom: '8px' }}>
+                Bespoke Gifting Concierge
+              </h3>
+              <p style={{ color: '#6C5E57', fontSize: '0.9rem', marginBottom: '24px' }}>
+                Share your event details and our specialist will connect within 2 hours.
+              </p>
 
               {formSubmitted ? (
-                <div style={{ textAlign: 'center', padding: '30px 10px' }}>
+                <div style={{ textAlign: 'center', padding: '30px 0' }}>
                   <div
                     style={{
-                      width: '56px',
-                      height: '56px',
+                      width: '60px',
+                      height: '60px',
                       borderRadius: '50%',
-                      backgroundColor: '#154D36',
-                      color: '#FFFFFF',
+                      backgroundColor: 'rgba(21, 77, 54, 0.1)',
+                      color: '#154D36',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       margin: '0 auto 16px',
                     }}
                   >
-                    <Check size={28} />
+                    <Check size={32} />
                   </div>
-                  <h4 style={{ fontSize: '1.25rem', color: '#154D36', marginBottom: '8px' }}>
-                    Inquiry Received!
-                  </h4>
-                  <p style={{ fontSize: '0.9rem', color: '#5C4F48' }}>
-                    Thank you. Our master gifting consultant will connect via WhatsApp/Phone shortly.
+                  <h4 style={{ color: '#154D36', fontSize: '1.3rem', marginBottom: '8px' }}>Inquiry Received!</h4>
+                  <p style={{ color: '#6C5E57', fontSize: '0.9rem' }}>
+                    Thank you, {formData.name}. Our gifting manager will contact you shortly on {formData.phone}.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   <div>
-                    <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#3A2E2A', display: 'block', marginBottom: '4px' }}>
+                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#4A3D36', marginBottom: '6px' }}>
                       Your Full Name
                     </label>
                     <input
-                      type="text"
                       required
-                      placeholder="e.g. Ramesh Patel"
+                      type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="e.g. Rahul Sharma"
                       style={{
                         width: '100%',
-                        padding: '10px 14px',
-                        borderRadius: '8px',
-                        border: '1.5px solid #D6CDC7',
-                        fontSize: '0.92rem',
-                        outline: 'none',
+                        padding: '12px 16px',
+                        borderRadius: '10px',
+                        border: '1px solid rgba(99, 12, 30, 0.2)',
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.95rem',
+                        boxSizing: 'border-box',
                       }}
                     />
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                     <div>
-                      <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#3A2E2A', display: 'block', marginBottom: '4px' }}>
-                        Phone / WhatsApp
+                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#4A3D36', marginBottom: '6px' }}>
+                        Mobile Phone
                       </label>
                       <input
-                        type="tel"
                         required
-                        placeholder="+91 98765 43210"
+                        type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="+91 98765 43210"
                         style={{
                           width: '100%',
-                          padding: '10px 14px',
-                          borderRadius: '8px',
-                          border: '1.5px solid #D6CDC7',
-                          fontSize: '0.92rem',
-                          outline: 'none',
+                          padding: '12px 16px',
+                          borderRadius: '10px',
+                          border: '1px solid rgba(99, 12, 30, 0.2)',
+                          fontFamily: 'var(--font-sans)',
+                          fontSize: '0.95rem',
+                          boxSizing: 'border-box',
                         }}
                       />
                     </div>
                     <div>
-                      <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#3A2E2A', display: 'block', marginBottom: '4px' }}>
-                        Occasion
+                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#4A3D36', marginBottom: '6px' }}>
+                        Approx Quantity
                       </label>
-                      <select
-                        value={formData.occasion}
-                        onChange={(e) => setFormData({ ...formData, occasion: e.target.value })}
+                      <input
+                        required
+                        type="number"
+                        min="10"
+                        value={formData.quantity}
+                        onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                         style={{
                           width: '100%',
-                          padding: '10px 14px',
-                          borderRadius: '8px',
-                          border: '1.5px solid #D6CDC7',
-                          fontSize: '0.92rem',
-                          outline: 'none',
-                          backgroundColor: '#FFFFFF',
+                          padding: '12px 16px',
+                          borderRadius: '10px',
+                          border: '1px solid rgba(99, 12, 30, 0.2)',
+                          fontFamily: 'var(--font-sans)',
+                          fontSize: '0.95rem',
+                          boxSizing: 'border-box',
                         }}
-                      >
-                        <option value="Wedding">Wedding Trousseau</option>
-                        <option value="Corporate">Corporate Gifting</option>
-                        <option value="Diwali">Diwali / Festive Hamper</option>
-                        <option value="Personal">Anniversary / Birthday</option>
-                      </select>
+                      />
                     </div>
                   </div>
 
                   <div>
-                    <label style={{ fontSize: '0.82rem', fontWeight: 700, color: '#3A2E2A', display: 'block', marginBottom: '4px' }}>
-                      Estimated Number of Boxes
+                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#4A3D36', marginBottom: '6px' }}>
+                      Occasion
                     </label>
-                    <input
-                      type="number"
-                      min="10"
-                      value={formData.quantity}
-                      onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+                    <select
+                      value={formData.occasion}
+                      onChange={(e) => setFormData({ ...formData, occasion: e.target.value })}
                       style={{
                         width: '100%',
-                        padding: '10px 14px',
-                        borderRadius: '8px',
-                        border: '1.5px solid #D6CDC7',
-                        fontSize: '0.92rem',
-                        outline: 'none',
+                        padding: '12px 16px',
+                        borderRadius: '10px',
+                        border: '1px solid rgba(99, 12, 30, 0.2)',
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.95rem',
+                        boxSizing: 'border-box',
                       }}
-                    />
+                    >
+                      <option value="Wedding">Wedding Invitation & Trousseau</option>
+                      <option value="Diwali">Diwali Corporate Gifting</option>
+                      <option value="Corporate">Corporate Anniversary / Milestone</option>
+                      <option value="Family">Birth Announcement / Housewarming</option>
+                    </select>
                   </div>
 
                   <button
                     type="submit"
                     className="btn-primary"
-                    style={{ marginTop: '10px', padding: '13px', width: '100%' }}
+                    style={{
+                      marginTop: '8px',
+                      padding: '14px',
+                      width: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      fontSize: '1rem',
+                    }}
                   >
                     <Send size={16} />
-                    <span>Submit Inquiry</span>
+                    <span>Send Custom Inquiry</span>
                   </button>
                 </form>
               )}
@@ -402,7 +435,6 @@ export default function GiftingSection({ onAddToCart, currency = 'INR' }) {
           </div>
         )}
       </AnimatePresence>
-
     </section>
   );
 }

@@ -17,7 +17,7 @@ export default function KitchenMenuSection({ onOpenRange }) {
       id: 'k-dosa',
       name: 'Mysore Butter Masala Dosa',
       tag: 'SOUTH INDIAN SPECIAL',
-      image: assetUrl('/kitchen/dosa.jpg'),
+      image: assetUrl('/kitchen/murari_special_dosa.jpg'),
       desc: 'Crispy golden crepe smeared with spicy red chutney, stuffed with spiced potato mash, served with sambar & coconut chutney.',
     },
     {
@@ -31,7 +31,7 @@ export default function KitchenMenuSection({ onOpenRange }) {
       id: 'k-paneer',
       name: 'Shahi Paneer Butter Masala',
       tag: 'NORTH INDIAN CURRY',
-      image: assetUrl('/kitchen/paneer_butter_masala.jpg'),
+      image: assetUrl('/kitchen/paneer_angara.jpg'),
       desc: 'Fresh cottage cheese cubes simmered in a velvety tomato and cashew gravy, finished with fresh cream and kasuri methi.',
     },
   ];
@@ -149,8 +149,12 @@ export default function KitchenMenuSection({ onOpenRange }) {
                   src={dish.image}
                   alt={dish.name}
                   onError={(e) => {
-                    if (e.target.src.endsWith('.jpg')) {
+                    if (!e.target.dataset.triedJfif && e.target.src.endsWith('.jpg')) {
+                      e.target.dataset.triedJfif = 'true';
                       e.target.src = e.target.src.replace('.jpg', '.jfif');
+                    } else if (!e.target.dataset.triedFallback) {
+                      e.target.dataset.triedFallback = 'true';
+                      e.target.src = assetUrl('/kitchen/murari_royal_thali.jpg');
                     }
                   }}
                   style={{

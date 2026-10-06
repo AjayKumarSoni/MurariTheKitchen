@@ -262,10 +262,9 @@ export default function App() {
             onOpenRange={handleOpenRange}
           />
 
-          {/* 9. Royal Gifting & Hampers */}
+          {/* 9. Royal Gifting & Hampers (4 Stylish Images) */}
           <GiftingSection
-            onAddToCart={handleAddToCart}
-            currency={currency}
+            onOpenRange={handleOpenRange}
           />
 
           {/* 10. Hallmark Brand Pillars */}

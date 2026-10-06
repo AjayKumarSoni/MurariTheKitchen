@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { assetUrl } from '../utils/assetUrl';
 
 export default function ProductSection({ products, onOpenRange }) {
   // Only 4 top best seller sweets
@@ -81,8 +82,12 @@ export default function ProductSection({ products, onOpenRange }) {
                   src={product.image}
                   alt={product.name}
                   onError={(e) => {
-                    if (e.target.src.endsWith('.jpg')) {
+                    if (!e.target.dataset.triedJfif && e.target.src.endsWith('.jpg')) {
+                      e.target.dataset.triedJfif = 'true';
                       e.target.src = e.target.src.replace('.jpg', '.jfif');
+                    } else if (!e.target.dataset.triedFallback) {
+                      e.target.dataset.triedFallback = 'true';
+                      e.target.src = assetUrl('/items/sweet-1.jpg');
                     }
                   }}
                   style={{

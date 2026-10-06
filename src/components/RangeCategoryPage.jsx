@@ -31,23 +31,23 @@ export default function RangeCategoryPage({
       name: 'Pure Ghee Sweets',
       count: '8 Products',
       subtitle: 'Slow-simmered in pure Vedic Bilona Cow Ghee',
-      image: assetUrl('/items/sweet-1.jpg'),
+      image: assetUrl('/items/new_sweet_5.jpg'),
       tag: '100% PURE DESI GHEE',
     },
     {
       id: 'gifting',
       name: 'Sweets Gifting',
-      count: '5 Products',
+      count: '8 Products',
       subtitle: 'Handcrafted luxury festive boxes & sweet hampers',
-      image: assetUrl('/items/gift-2.jpg'),
+      image: assetUrl('/items/new_sweet_2.png'),
       tag: 'ROYAL HAMPERS',
     },
     {
       id: 'savouries',
       name: 'Traditional Savouries',
-      count: '6 Products',
+      count: '5 Products',
       subtitle: 'Cold-pressed native groundnut oil crispy namkeens',
-      image: assetUrl('/items/Savouries-1.jpg'),
+      image: assetUrl('/items/new_savouries_1.jpg'),
       tag: 'COLD PRESSED OIL',
     },
     {
@@ -63,7 +63,7 @@ export default function RangeCategoryPage({
       name: '₹99 Fresh Bestsellers',
       count: '4 Products',
       subtitle: 'Everyday fresh snack and sweet portions at ₹99',
-      image: assetUrl('/items/Savouries-2.jpg'),
+      image: assetUrl('/items/new_savouries_2.jpg'),
       tag: 'DAILY FRESH VALUE',
     },
     {
@@ -71,7 +71,7 @@ export default function RangeCategoryPage({
       name: 'Royal Dry Fruits & Hampers',
       count: '5 Products',
       subtitle: 'Premium hand-sorted dry fruit gifting collections',
-      image: assetUrl('/items/gift-1.jpg'),
+      image: assetUrl('/items/new_sweet_3.png'),
       tag: 'GOAN CASHEWS & ALMONDS',
     },
     {
@@ -79,7 +79,7 @@ export default function RangeCategoryPage({
       name: 'Bengali & Milk Sweets',
       count: '6 Products',
       subtitle: 'Fresh cow milk chhena cham cham, rasgulla & peda',
-      image: assetUrl('/items/sweet-3.jpg'),
+      image: assetUrl('/items/sweet-2.jpg'),
       tag: 'FRESH CHHENA & MAWA',
     },
   ];
@@ -104,7 +104,7 @@ export default function RangeCategoryPage({
       return PRODUCTS.filter((p) => p.category === 'savouries');
     }
     if (activeCategory === 'gifting') {
-      return PRODUCTS.filter((p) => p.category === 'gifting');
+      return PRODUCTS.filter((p) => p.category === 'gifting' || p.id.includes('box') || p.id.includes('hamper'));
     }
     if (activeCategory === 'express') {
       return PRODUCTS.filter((p) => p.category === 'express' || p.basePrice <= 160);
@@ -370,8 +370,12 @@ export default function RangeCategoryPage({
                       src={cat.image}
                       alt={cat.name}
                       onError={(e) => {
-                        if (e.target.src.endsWith('.jpg')) {
+                        if (!e.target.dataset.triedJfif && e.target.src.endsWith('.jpg')) {
+                          e.target.dataset.triedJfif = 'true';
                           e.target.src = e.target.src.replace('.jpg', '.jfif');
+                        } else if (!e.target.dataset.triedFallback) {
+                          e.target.dataset.triedFallback = 'true';
+                          e.target.src = assetUrl('/items/sweet-1.jpg');
                         }
                       }}
                       style={{
@@ -647,6 +651,12 @@ export default function RangeCategoryPage({
                         <img
                           src={dish.image}
                           alt={dish.name}
+                          onError={(e) => {
+                            if (!e.target.dataset.triedFallback) {
+                              e.target.dataset.triedFallback = 'true';
+                              e.target.src = assetUrl('/kitchen/murari_royal_thali.jpg');
+                            }
+                          }}
                           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                         <div

@@ -12,21 +12,21 @@ export default function CategoryShowcase({ onSelectCategory, selectedCategory })
       name: 'Pure Ghee Sweets',
       count: '8 Products',
       target: 'sweets',
-      image: assetUrl('/items/sweet-1.jpg'),
+      image: assetUrl('/items/new_sweet_5.jpg'),
     },
     {
       id: 'gifting',
       name: 'Sweets Gifting',
-      count: '5 Products',
+      count: '8 Products',
       target: 'gifting',
-      image: assetUrl('/items/gift-2.jpg'),
+      image: assetUrl('/items/new_sweet_2.png'),
     },
     {
       id: 'savouries',
       name: 'Traditional Savouries',
-      count: '6 Products',
+      count: '5 Products',
       target: 'savouries',
-      image: assetUrl('/items/Savouries-1.jpg'),
+      image: assetUrl('/items/new_savouries_1.jpg'),
     },
     {
       id: 'kitchen',
@@ -40,21 +40,21 @@ export default function CategoryShowcase({ onSelectCategory, selectedCategory })
       name: '₹99 Fresh Bestsellers',
       count: '4 Products',
       target: 'express',
-      image: assetUrl('/items/Savouries-2.jpg'),
+      image: assetUrl('/items/new_savouries_2.jpg'),
     },
     {
       id: 'dryfruits',
       name: 'Royal Dry Fruits & Hampers',
       count: '5 Products',
       target: 'gifting',
-      image: assetUrl('/items/gift-1.jpg'),
+      image: assetUrl('/items/new_sweet_3.png'),
     },
     {
       id: 'milk-delights',
       name: 'Bengali & Milk Sweets',
       count: '6 Products',
       target: 'sweets',
-      image: assetUrl('/items/sweet-3.jpg'),
+      image: assetUrl('/items/sweet-2.jpg'),
     },
   ];
 
@@ -239,8 +239,12 @@ export default function CategoryShowcase({ onSelectCategory, selectedCategory })
                   alt={cat.name}
                   loading="lazy"
                   onError={(e) => {
-                    if (e.target.src.endsWith('.jpg')) {
+                    if (!e.target.dataset.triedJfif && e.target.src.endsWith('.jpg')) {
+                      e.target.dataset.triedJfif = 'true';
                       e.target.src = e.target.src.replace('.jpg', '.jfif');
+                    } else if (!e.target.dataset.triedFallback) {
+                      e.target.dataset.triedFallback = 'true';
+                      e.target.src = assetUrl('/items/new_sweet_5.jpg');
                     }
                   }}
                   style={{

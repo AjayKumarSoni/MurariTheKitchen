@@ -1,29 +1,86 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Award, Flame, Heart, ShieldCheck, MapPin, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Award, Flame, ShieldCheck, MapPin, Sparkles, CheckCircle2, Crown, Smartphone, Store, TrendingUp, Users, ArrowRight } from 'lucide-react';
 import { assetUrl } from '../utils/assetUrl';
 
 export default function AboutSection() {
   const [activeStoryTab, setActiveStoryTab] = useState('heritage');
 
+  // The 4 Generations Family Lineage as requested by the user
+  const generations = [
+    {
+      gen: 'GEN 1',
+      era: '1952 • The Inception',
+      role: 'Great-Grandfather (परदादा जी)',
+      name: 'Murari Sharma',
+      action: 'Started the Business',
+      title: 'The Sacred Foundation',
+      desc: 'Founded the business in 1952 at Hatri Chowk, Raigarh with a sacred vow: 100% pure Bilona cow ghee, temple-pure recipes, and uncompromised authenticity.',
+      badgeBg: 'linear-gradient(135deg, #630C1E 0%, #400612 100%)',
+      accentColor: '#C68928',
+      symbol: '⚜',
+      highlightBadge: 'Founder • Estd. 1952',
+    },
+    {
+      gen: 'GEN 2',
+      era: '1970s–1980s • Growth',
+      role: 'Grandfather (दादा जी)',
+      name: 'Vimal Sharma',
+      action: 'Expanded the Business',
+      title: 'Heritage & Reputation',
+      desc: 'Expanded the business across Raigarh, popularised our signature desi ghee sweets, and established Murari as the city’s undisputed landmark of purity and trust.',
+      badgeBg: 'linear-gradient(135deg, #154D36 0%, #0E3525 100%)',
+      accentColor: '#2D8659',
+      symbol: '❖',
+      highlightBadge: 'Pioneered Expansion',
+    },
+    {
+      gen: 'GEN 3',
+      era: '2010s • The Kitchen Era',
+      role: 'Father & Mother (माता-पिता जी)',
+      name: 'Pawan Sharma & Manisha Sharma',
+      action: 'Opened the New Grand Outlet',
+      title: 'Murari The Kitchen Dining',
+      desc: 'Envisioned modern culinary excellence and opened our flagship new outlet—Murari The Kitchen on Dhimrapur Road—offering grand pure-veg multi-cuisine dining & thalis.',
+      badgeBg: 'linear-gradient(135deg, #7A1C2E 0%, #540D1C 100%)',
+      accentColor: '#C68928',
+      symbol: '◈',
+      highlightBadge: 'Flagship New Outlet',
+    },
+    {
+      gen: 'GEN 4',
+      era: 'Present & Future • Innovation',
+      role: 'Brother & Me (चौथी पीढ़ी)',
+      name: 'Yuvraj Sharma & Shivee Sharma',
+      action: 'Digitalisation & Modern Operations',
+      title: 'Digital Era & Luxury Gifting',
+      desc: 'Spearheading complete digitalisation—seamless online ordering, 45-minute citywide delivery, artisanal festive hampers, and pan-India reach while preserving age-old Vedic recipes.',
+      badgeBg: 'linear-gradient(135deg, #1A365D 0%, #0F2341 100%)',
+      accentColor: '#3182CE',
+      symbol: '✦',
+      highlightBadge: 'Digitalisation & Future',
+    },
+  ];
+
   const milestones = [
-    { year: '1952', title: 'The Sacred Foundation', desc: 'Started in Raigarh with a singular vow: every confection must be as pure as temple prasad.' },
-    { year: '1970s', title: 'Hatri Chowk Landmark', desc: 'Shree Mahavir Misthan Bhandar became the go-to heritage destination for hot kachoris and pure ghee sweets.' },
-    { year: '2010s', title: 'Murari The Kitchen', desc: 'Expanded into a premier multi-cuisine pure vegetarian family restaurant on Dhimrapur Road.' },
-    { year: 'Today', title: '70+ Years of Purity', desc: 'Serving third-generation patrons across Chhattisgarh with doorstep delivery and festive gifting.' },
+    { year: '1952', title: 'The Sacred Foundation', desc: 'Started by Great-Grandfather Murari Sharma at Hatri Chowk with pure Vedic ghee sweets.' },
+    { year: '1970s', title: 'Grandfather’s Expansion', desc: 'Grandfather Vimal Sharma expanded the brand into Raigarh’s premier sweet destination.' },
+    { year: '2010s', title: 'Murari The Kitchen Outlet', desc: 'Father Pawan Sharma & Mother Manisha Sharma opened the grand Dhimrapur Road restaurant.' },
+    { year: 'Today', title: 'Gen 4 Digitalisation', desc: 'Brother Yuvraj Sharma & Shivee Sharma bring doorstep delivery and digital ordering across Raigarh.' },
   ];
 
   const storyTabs = {
     heritage: {
       title: 'Our Roots in Raigarh Since 1952',
-      badge: '70+ Years Legacy',
-      image: assetUrl('/heritage/sacred-heritage.jpg'),
+      badge: '70+ Years Family Legacy',
+      image: assetUrl('/heritage/about_legacy_hero.jpg'),
       content:
-        'Named in reverence to Lord Krishna—the divine embodiment of sweetness, melody, and sacred butter—Murari was founded in 1952 in the cultural city of Raigarh, Chhattisgarh. What began at Hatri Chowk as a passionate pursuit of authentic halwai craftsmanship has flourished into one of the region’s most revered culinary traditions. Over seven decades and across three generations, our ovens and kadhais have remained true to ancient Vedic recipes, never swapping time-honoured technique for modern shortcuts.',
+        'Founded in 1952 by Great-Grandfather Murari Sharma at Hatri Chowk, Raigarh, our family business began with a singular vow: every confection must be as pure as temple prasad. Over four generations and more than seven decades, that sacred promise has only grown stronger. Expanded by Grandfather Vimal Sharma, transformed into a modern dining destination with our new Dhimrapur Road outlet by Father Pawan Sharma & Mother Manisha Sharma, and now digitally modernized by Gen 4—Yuvraj Sharma & Shivee Sharma—Murari remains Raigarh’s most cherished culinary heritage.',
       points: [
-        'Founded in 1952 at Hatri Chowk, Raigarh',
-        'Traditional recipes handed down through three generations',
-        'Beloved landmark for festivals, weddings, and daily celebrations',
+        'Founded in 1952 by Great-Grandfather Murari Sharma in Raigarh',
+        'Four generations of unbroken family dedication to pure Vedic taste',
+        'Traditional Bilona cow ghee recipes handed down across 70+ years',
+        'Modernized with a flagship dining outlet and complete digital ordering',
       ],
     },
     bilona: {
@@ -43,7 +100,7 @@ export default function AboutSection() {
       badge: '100% Pure Vegetarian',
       image: assetUrl('/stores/outlet-1.png'),
       content:
-        'Recognizing Raigarh’s growing appetite for quality dining, we opened Murari The Kitchen on Dhimrapur Road. Designed as a warm, welcoming haven for families, it offers a multi-cuisine feast spanning authentic North Indian gravies, slow-cooked royal thalis, crispy golden South Indian dosas, tandoori breads, and street-style chaat—all prepared under the strictest standards of purity and kitchen hygiene.',
+        'Recognizing Raigarh’s growing appetite for quality dining, Father Pawan Sharma and Mother Manisha Sharma opened Murari The Kitchen on Dhimrapur Road. Designed as a warm, welcoming haven for families, it offers a multi-cuisine feast spanning authentic North Indian gravies, slow-cooked royal thalis, crispy golden South Indian dosas, tandoori breads, and street-style chaat—all prepared under the strictest standards of purity and kitchen hygiene.',
       points: [
         'Spacious, air-conditioned family dining on Dhimrapur Road',
         'Multi-cuisine menu: North Indian, South Indian, Tandoor & Thalis',
@@ -141,7 +198,7 @@ export default function AboutSection() {
               lineHeight: 1.6,
             }}
           >
-            A 70+ year legacy of authentic Indian sweets, pure bilona ghee, and grand multi-cuisine dining in Raigarh.
+            A 70+ year legacy of pure desi cow ghee sweets, authentic family recipes, and grand dining across four generations in Raigarh.
           </p>
         </motion.div>
 
@@ -155,8 +212,8 @@ export default function AboutSection() {
           }}
         >
           {[
-            { number: '1952', label: 'Inception in Raigarh', icon: <MapPin size={20} color="#C68928" /> },
-            { number: '70+ Yrs', label: 'Legacy of Trust', icon: <Award size={20} color="#630C1E" /> },
+            { number: '1952', label: 'Founded by Murari Sharma', icon: <MapPin size={20} color="#C68928" /> },
+            { number: '4 Gens', label: 'Generations of Trust', icon: <Crown size={20} color="#630C1E" /> },
             { number: '100%', label: 'Pure Desi Cow Ghee', icon: <Flame size={20} color="#154D36" /> },
             { number: '2 Outlets', label: 'Dhimrapur & Hatri Chowk', icon: <ShieldCheck size={20} color="#C68928" /> },
           ].map((stat, i) => (
@@ -252,7 +309,7 @@ export default function AboutSection() {
           })}
         </div>
 
-        {/* Story Narrative Card */}
+        {/* Story Narrative Card (Using user's newly uploaded authentic photo) */}
         <motion.div
           key={activeStoryTab}
           initial={{ opacity: 0, y: 20 }}
@@ -261,23 +318,24 @@ export default function AboutSection() {
           style={{
             backgroundColor: '#FFFFFF',
             borderRadius: '24px',
-            border: '1px solid rgba(198, 137, 40, 0.25)',
+            border: '1.5px solid rgba(198, 137, 40, 0.25)',
             boxShadow: '0 16px 45px rgba(64, 6, 18, 0.07)',
             overflow: 'hidden',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             alignItems: 'center',
-            marginBottom: '48px',
+            marginBottom: '44px',
           }}
         >
           {/* Left Column: Image with Tag */}
-          <div style={{ position: 'relative', height: '100%', minHeight: '340px' }}>
+          <div style={{ position: 'relative', height: '100%', minHeight: '380px', backgroundColor: '#F3EFEA' }}>
             <img
               src={currentTab.image}
               alt={currentTab.title}
               onError={(e) => {
-                if (e.target.src.endsWith('.jpg')) {
-                  e.target.src = e.target.src.replace('.jpg', '.jfif');
+                if (!e.target.dataset.triedFallback) {
+                  e.target.dataset.triedFallback = 'true';
+                  e.target.src = assetUrl('/heritage/about_legacy_hero.jpg');
                 }
               }}
               style={{
@@ -303,6 +361,30 @@ export default function AboutSection() {
               }}
             >
               {currentTab.badge}
+            </div>
+
+            {/* Sub-caption badge for authentic Kaju Katli */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '16px',
+                left: '16px',
+                right: '16px',
+                backgroundColor: 'rgba(21, 77, 54, 0.92)',
+                backdropFilter: 'blur(8px)',
+                color: '#FFFFFF',
+                padding: '8px 14px',
+                borderRadius: '12px',
+                fontSize: '0.78rem',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                boxShadow: '0 4px 14px rgba(0,0,0,0.18)',
+              }}
+            >
+              <Sparkles size={14} style={{ color: '#F3C363', flexShrink: 0 }} />
+              <span>Murari Signature Silver Vark Kaju Katli • 100% Goan Cashews</span>
             </div>
           </div>
 
@@ -344,6 +426,250 @@ export default function AboutSection() {
             </div>
           </div>
         </motion.div>
+
+        {/* ═══ 4 GENERATIONS FAMILY HERITAGE SHOWCASE ═══ */}
+        <div style={{ marginTop: '20px', marginBottom: '50px' }}>
+          
+          {/* Generations Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            style={{ textAlign: 'center', marginBottom: '32px' }}
+          >
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: 'rgba(198, 137, 40, 0.12)',
+                border: '1px solid rgba(198, 137, 40, 0.35)',
+                color: '#630C1E',
+                padding: '6px 18px',
+                borderRadius: '999px',
+                fontSize: '0.8rem',
+                fontWeight: 800,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                marginBottom: '12px',
+              }}
+            >
+              <Crown size={15} style={{ color: '#C68928' }} />
+              <span>Four Generations of Unbroken Purity</span>
+            </div>
+
+            <h3
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(2rem, 3.5vw, 2.7rem)',
+                color: '#630C1E',
+                fontWeight: 600,
+                margin: '0 0 10px',
+                lineHeight: 1.2,
+              }}
+            >
+              चार पीढ़ियों का गौरवशाली सफर (Gen 1 – Gen 4)
+            </h3>
+
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '1.02rem',
+                color: '#5C4F48',
+                maxWidth: '660px',
+                margin: '0 auto',
+                lineHeight: 1.65,
+              }}
+            >
+              1952 में परदादा जी की पवित्र शुरुआत से लेकर आज चौथी पीढ़ी के डिजिटल युग तक — जानिए कैसे हर पीढ़ी ने मुरारी के स्वाद और विश्वास को आगे बढ़ाया।
+            </p>
+          </motion.div>
+
+          {/* 4 Generation Cards Grid */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '22px',
+              position: 'relative',
+            }}
+          >
+            {generations.map((gen, idx) => (
+              <motion.div
+                key={gen.gen}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(99, 12, 30, 0.12)' }}
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  borderRadius: '22px',
+                  border: '1.5px solid rgba(198, 137, 40, 0.28)',
+                  boxShadow: '0 10px 30px rgba(64, 6, 18, 0.05)',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  position: 'relative',
+                  transition: 'all 0.3s ease',
+                }}
+              >
+                {/* Top Banner with Generation Tag */}
+                <div
+                  style={{
+                    background: gen.badgeBg,
+                    padding: '18px 20px',
+                    color: '#FFFFFF',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {/* Subtle Background Symbol */}
+                  <span
+                    style={{
+                      position: 'absolute',
+                      right: '12px',
+                      top: '8px',
+                      fontSize: '3.5rem',
+                      opacity: 0.12,
+                      fontFamily: 'serif',
+                      lineHeight: 1,
+                      pointerEvents: 'none',
+                    }}
+                  >
+                    {gen.symbol}
+                  </span>
+
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                    <span
+                      style={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.18)',
+                        backdropFilter: 'blur(4px)',
+                        padding: '3px 10px',
+                        borderRadius: '999px',
+                        fontSize: '0.72rem',
+                        fontWeight: 800,
+                        letterSpacing: '0.1em',
+                        color: '#F3C363',
+                        border: '1px solid rgba(243, 195, 99, 0.3)',
+                      }}
+                    >
+                      {gen.gen}
+                    </span>
+                    <span style={{ fontSize: '0.74rem', color: '#FAF7F2', opacity: 0.85, fontWeight: 500 }}>
+                      {gen.era}
+                    </span>
+                  </div>
+
+                  {/* Generation Role Tag */}
+                  <p
+                    style={{
+                      fontSize: '0.82rem',
+                      color: '#FAF7F2',
+                      opacity: 0.9,
+                      fontWeight: 600,
+                      margin: '0 0 4px',
+                      letterSpacing: '0.02em',
+                    }}
+                  >
+                    {gen.role}
+                  </p>
+
+                  {/* Person Name */}
+                  <h4
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: '1.45rem',
+                      fontWeight: 700,
+                      color: '#FFFFFF',
+                      margin: 0,
+                      lineHeight: 1.25,
+                      textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                    }}
+                  >
+                    {gen.name}
+                  </h4>
+                </div>
+
+                {/* Card Body */}
+                <div style={{ padding: '22px 20px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                  
+                  {/* Business Action Badge */}
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      backgroundColor: 'rgba(198, 137, 40, 0.1)',
+                      border: '1px solid rgba(198, 137, 40, 0.25)',
+                      padding: '5px 12px',
+                      borderRadius: '8px',
+                      marginBottom: '12px',
+                      width: 'fit-content',
+                    }}
+                  >
+                    <span style={{ color: '#C68928', fontSize: '0.85rem' }}>❖</span>
+                    <span
+                      style={{
+                        fontSize: '0.82rem',
+                        fontWeight: 700,
+                        color: '#630C1E',
+                        letterSpacing: '0.02em',
+                      }}
+                    >
+                      {gen.action}
+                    </span>
+                  </div>
+
+                  <h5
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: '1.12rem',
+                      fontWeight: 700,
+                      color: '#2A1F1D',
+                      margin: '0 0 8px',
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {gen.title}
+                  </h5>
+
+                  <p
+                    style={{
+                      fontSize: '0.88rem',
+                      color: '#5C4F48',
+                      lineHeight: 1.6,
+                      margin: '0 0 16px',
+                      flexGrow: 1,
+                    }}
+                  >
+                    {gen.desc}
+                  </p>
+
+                  {/* Bottom Milestone Footer Pill */}
+                  <div
+                    style={{
+                      borderTop: '1px dashed rgba(99, 12, 30, 0.15)',
+                      paddingTop: '12px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      fontSize: '0.78rem',
+                      color: '#154D36',
+                      fontWeight: 700,
+                    }}
+                  >
+                    <span>✓ {gen.highlightBadge}</span>
+                    <span style={{ color: '#C68928' }}>{gen.symbol}</span>
+                  </div>
+
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+        </div>
 
         {/* Heritage Timeline Grid */}
         <div style={{ marginTop: '20px' }}>

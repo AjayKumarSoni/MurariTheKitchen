@@ -11,7 +11,7 @@ export default function AboutSection() {
     {
       gen: 'GEN 1',
       era: '1952 • The Inception',
-      role: 'Great-Grandfather (परदादा जी)',
+      role: 'Great-Grandfather',
       name: 'Murari Sharma',
       action: 'Started the Business',
       title: 'The Sacred Foundation',
@@ -24,7 +24,7 @@ export default function AboutSection() {
     {
       gen: 'GEN 2',
       era: '1970s–1980s • Growth',
-      role: 'Grandfather (दादा जी)',
+      role: 'Grandfather',
       name: 'Vimal Sharma',
       action: 'Expanded the Business',
       title: 'Heritage & Reputation',
@@ -37,7 +37,7 @@ export default function AboutSection() {
     {
       gen: 'GEN 3',
       era: '2010s • The Kitchen Era',
-      role: 'Father & Mother (माता-पिता जी)',
+      role: 'Father & Mother',
       name: 'Pawan Sharma & Manisha Sharma',
       action: 'Opened the New Grand Outlet',
       title: 'Murari The Kitchen Dining',
@@ -50,7 +50,7 @@ export default function AboutSection() {
     {
       gen: 'GEN 4',
       era: 'Present & Future • Innovation',
-      role: 'Brother & Me (चौथी पीढ़ी)',
+      role: 'Brother & Me (4th Generation)',
       name: 'Yuvraj Sharma & Shivee Sharma',
       action: 'Digitalisation & Modern Operations',
       title: 'Digital Era & Luxury Gifting',
@@ -469,7 +469,7 @@ export default function AboutSection() {
                 lineHeight: 1.2,
               }}
             >
-              चार पीढ़ियों का गौरवशाली सफर (Gen 1 – Gen 4)
+              The Journey of 4 Generations (Gen 1 – Gen 4)
             </h3>
 
             <p
@@ -482,7 +482,7 @@ export default function AboutSection() {
                 lineHeight: 1.65,
               }}
             >
-              1952 में परदादा जी की पवित्र शुरुआत से लेकर आज चौथी पीढ़ी के डिजिटल युग तक — जानिए कैसे हर पीढ़ी ने मुरारी के स्वाद और विश्वास को आगे बढ़ाया।
+              From our Great-Grandfather’s pure beginning in 1952 to today’s digital era — discover how each generation expanded the taste, quality, and legacy of Murari.
             </p>
           </motion.div>
 

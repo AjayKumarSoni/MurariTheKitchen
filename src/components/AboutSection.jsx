@@ -50,7 +50,7 @@ export default function AboutSection() {
     {
       gen: 'GEN 4',
       era: 'Present & Future • Innovation',
-      role: 'Brother & Me (4th Generation)',
+      role: 'Siblings',
       name: 'Yuvraj Sharma & Shivee Sharma',
       action: 'Digitalisation & Modern Operations',
       title: 'Digital Era & Luxury Gifting',
@@ -66,7 +66,7 @@ export default function AboutSection() {
     { year: '1952', title: 'The Sacred Foundation', desc: 'Started by Great-Grandfather Murari Sharma at Hatri Chowk with pure Vedic ghee sweets.' },
     { year: '1970s', title: 'Grandfather’s Expansion', desc: 'Grandfather Vimal Sharma expanded the brand into Raigarh’s premier sweet destination.' },
     { year: '2010s', title: 'Murari The Kitchen Outlet', desc: 'Father Pawan Sharma & Mother Manisha Sharma opened the grand Dhimrapur Road restaurant.' },
-    { year: 'Today', title: 'Gen 4 Digitalisation', desc: 'Brother Yuvraj Sharma & Shivee Sharma bring doorstep delivery and digital ordering across Raigarh.' },
+    { year: 'Today', title: 'Gen 4 Digitalisation', desc: 'Siblings Yuvraj Sharma & Shivee Sharma bring doorstep delivery and digital ordering across Raigarh.' },
   ];
 
   const storyTabs = {
